@@ -24,7 +24,7 @@ public class SeasonService {
        DatabaseConnexion instance = DatabaseConnexion.getInstance();
     Connection cnx = instance.getCnx();
     }
- public void ajouterTest(Season p){
+ public void addSeason(Season p){
         String query ="insert into season(serie_id,name,description,image_url, trailer_url) values('"+p.getSerie_id()+"','"+p.getName()+"','"+p.getDescription()+"','"+p.getImage_url()+"','"+p.getTrailer_url()+"')";
         
             Statement ste;
@@ -38,22 +38,8 @@ public class SeasonService {
            
         
     }
- public void ajouterTest2(Season p){
-        String sql="insert into season(id,serie_id,name,description,image_url, trailer_url) values (?,?,?,?,?,?)";
-        try {
-            PreparedStatement ste = cnx.prepareStatement(sql);
-            ste.setInt(1, p.getSerie_id());
-            ste.setString(2, p.getName());
-            ste.setString(3, p.getDescription());
-            ste.setString(4, p.getImage_url());
-            ste.setString(5, p.getTrailer_url());
-            ste.executeUpdate();
-            System.out.println("Test Ajoutée !!!");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
- public List<Season> afficherTest(){
+
+ public List<Season> readSeasons(){
         List<Season> season = new ArrayList<>();
         String sql ="select * from season";
         try {
@@ -76,7 +62,7 @@ public class SeasonService {
         return season;
     }
 
- public void modifierTest(String name, int id){
+ public void updateSeason(String name, int id){
                 String requete="UPDATE season SET Name='"+name+"' where ID = '"+id+"'";
          
 
@@ -91,7 +77,7 @@ public class SeasonService {
             Logger.getLogger(SeasonService.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
- public void supprimerTest(int id) {
+ public void deleteSeason(int id) {
        
        
             String requete = "delete from season where id=?";
