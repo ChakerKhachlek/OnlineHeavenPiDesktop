@@ -20,11 +20,11 @@ public class MainTestSeason {
     public static void main(String[] args) {
         Season p = new Season(7,37,"kalil","fff","lkdsgmldqksmlgq","kgldqksgq");
         SeasonService ps = new SeasonService();
-        ps.ajouterTest(p);
+        ps.addSeason(p);
         
-        System.out.println(ps.afficherTest());
-        ps.modifierTest("m",1);
-        ps.supprimerTest(27);
+        System.out.println(ps.readSeasons());
+        ps.updateSeason("m",1);
+        ps.deleteSeason(27);
         
         
         
