@@ -82,6 +82,8 @@ public class OnlineHeavenPiDesktop {
         }
 }
     
+    //series methods
+     
       private static void getCategorySeries(CategoryService categoryService) {
             Scanner scanner = new Scanner(System.in);
           System.out.print("Enter category id  : ");
@@ -92,15 +94,7 @@ public class OnlineHeavenPiDesktop {
                         System.out.println(serie.getId()+ " "+serie.getName()+" "+serie.getDescription()+" "+serie.getImage_local_url()+" "+serie.getTrailer()+" "+serie.getRelease_date()+" "+serie.getStudio_name()+" "+serie.getViews_count()+" "+serie.getCreated_at());
     }}
       
-     private static void getSerieCategories(SerieService serieService) {
-          Scanner scanner = new Scanner(System.in);
-          System.out.print("Enter serie id  : ");
-       int serieId=scanner.nextInt();
-       List<Category> listCategories=serieService.getSerieCategories(serieId);
-                        for(Category category : listCategories) {
-                        System.out.println(category.getId()+ " "+category.getName());
-    }}
-     
+   
      private static void addSerieCategory(SerieService serieService) {
          Scanner scanner = new Scanner(System.in);
           System.out.print("Enter serie id  : ");
@@ -157,8 +151,18 @@ public class OnlineHeavenPiDesktop {
      
       
     
+    //categories methods
+       
     private static void displayCategories(CategoryService categoryService) {
        List<Category> listCategories=categoryService.readCategories();
+                        for(Category category : listCategories) {
+                        System.out.println(category.getId()+ " "+category.getName());
+    }}
+      private static void getSerieCategories(SerieService serieService) {
+          Scanner scanner = new Scanner(System.in);
+          System.out.print("Enter serie id  : ");
+       int serieId=scanner.nextInt();
+       List<Category> listCategories=serieService.getSerieCategories(serieId);
                         for(Category category : listCategories) {
                         System.out.println(category.getId()+ " "+category.getName());
     }}
