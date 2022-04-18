@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package onlineheavenpidesktop;
+package tests;
 
 import java.sql.Date;
 import java.util.List;
@@ -16,7 +16,7 @@ import services.SerieService;
  *
  * @author Lord Solari
  */
-public class OnlineHeavenPiDesktop {
+public class MainTestCategorySerie {
     
        public static void printMenu(String[] options){
         for (String option : options){

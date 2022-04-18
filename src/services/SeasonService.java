@@ -6,6 +6,7 @@
 package services;
 
 import database.DatabaseConnexion;
+import interfaces.IServiceSeason;
 import models.Season;
 
 import java.sql.*;
@@ -18,11 +19,13 @@ import java.util.logging.Logger;
  *
  * @author HP
  */
-public class SeasonService {
-    Connection cnx;
-    public SeasonService() {
-       DatabaseConnexion instance = DatabaseConnexion.getInstance();
+public class SeasonService implements IServiceSeason{
+    
+    DatabaseConnexion instance = DatabaseConnexion.getInstance();
     Connection cnx = instance.getCnx();
+    
+    public SeasonService() {
+     
     }
  public void addSeason(Season p){
         String query ="insert into season(serie_id,name,description,image_url, trailer_url) values('"+p.getSerie_id()+"','"+p.getName()+"','"+p.getDescription()+"','"+p.getImage_url()+"','"+p.getTrailer_url()+"')";
@@ -92,6 +95,7 @@ public class SeasonService {
         }
        
     }
+
 
 
  
