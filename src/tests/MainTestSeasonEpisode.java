@@ -6,6 +6,7 @@
 package tests;
 
 import models.Season;
+import services.EpisodeService;
 
 import services.SeasonService;
 
@@ -14,18 +15,16 @@ import services.SeasonService;
  *
  * @author kalil
  */
-public class MainTestSeason {
+public class MainTestSeasonEpisode {
 
     
     public static void main(String[] args) {
-        Season p = new Season(7,37,"kalil","fff","lkdsgmldqksmlgq","kgldqksgq");
-        SeasonService ps = new SeasonService();
-        ps.addSeason(p);
-        
-        System.out.println(ps.readSeasons());
-        ps.updateSeason("m",1);
-        ps.deleteSeason(27);
-        
+
+       SeasonService ps = new SeasonService();
+       EpisodeService pe = new EpisodeService();
+       System.out.println(ps.readSeasons());
+       System.out.println(pe.show_episodes());
+       
         
         
     }
