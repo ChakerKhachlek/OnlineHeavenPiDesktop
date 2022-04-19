@@ -3,14 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/models/User.java</file>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/models/Category.java</file>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/tests/MainTestUser.java</file>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/interfaces/IServicePost.java</file>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/PostService.java</file>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/models/Post.java</file>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/tests/MainTestSeasonEpisode.java</file>
             <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/interfaces/IServiceSerie.java</file>
             <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/SeasonService.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/models/Category.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/models/Season.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/onlineheavenpidesktop/OnlineHeavenPiDesktop.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/tests/MainTestSeason.java</file>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/tests/MainTestPost.java</file>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/main/MainApplication.java</file>
             <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/interfaces/IServiceCategory.java</file>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/EpisodeService.java</file>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/interfaces/IServiceUser.java</file>
             <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/SerieService.java</file>
+            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/UserService.java</file>
             <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/models/Serie.java</file>
             <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/CategoryService.java</file>
             <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/database/DatabaseConnexion.java</file>
