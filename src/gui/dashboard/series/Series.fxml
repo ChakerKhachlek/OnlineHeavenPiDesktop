@@ -29,13 +29,15 @@
             <Label layoutX="90.0" layoutY="90.0" text="Image Url" />
             <Label layoutX="90.0" layoutY="128.0" text="Trailer Url" />
             <Label layoutX="90.0" layoutY="165.0" text="Release Date" />
-            <Label layoutX="90.0" layoutY="203.0" text="Initial Rating" />
-            <TextField fx:id="ratingTextField" layoutX="169.0" layoutY="199.0" prefHeight="25.0" prefWidth="89.0" />
-            <TextField fx:id="views_countTextField" layoutX="194.0" layoutY="238.0" prefHeight="25.0" prefWidth="112.0" />
-            <Label layoutX="90.0" layoutY="242.0" text="Initial Views Count" />
+            <Label layoutX="241.0" layoutY="242.0" text="Rating" />
+            <TextField fx:id="ratingTextField" layoutX="290.0" layoutY="238.0" prefHeight="25.0" prefWidth="56.0" />
+            <TextField fx:id="views_countTextField" layoutX="133.0" layoutY="238.0" prefHeight="25.0" prefWidth="96.0" />
+            <Label layoutX="57.0" layoutY="242.0" text="Views Count" />
             <TextField fx:id="studio_nameTextField" layoutX="176.0" layoutY="281.0" />
             <Label layoutX="86.0" layoutY="285.0" text="Studio Name" />
             <DatePicker fx:id="release_dateTextField" layoutX="163.0" layoutY="161.0" />
+            <Label layoutX="114.0" layoutY="204.0" text="Categories" />
+            <JFXListView fx:id="categoriesList" layoutX="184.0" layoutY="197.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
       <ImageView fx:id="printToPdfButton" fitHeight="36.0" fitWidth="36.0" layoutX="35.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">

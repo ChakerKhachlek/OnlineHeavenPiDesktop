@@ -27,7 +27,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import models.Category;
 import models.Serie;
+import services.CategoryService;
 import services.SerieService;
 
 import java.net.URL;
@@ -94,12 +96,38 @@ public class SeriesController implements Initializable {
 
     @FXML
     private ImageView printToPdfButton;
+
+    @FXML
+    private ListView categoriesList;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        CategoryService categoryService=new CategoryService();
+        ArrayList categoryList=(ArrayList) categoryService.readCategories();
 
+        ObservableList observablecategoryList = FXCollections.observableArrayList(categoryList);
+
+        categoriesList.setItems(observablecategoryList);
+        categoriesList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        categoriesList.setMaxWidth(50);
+
+        categoriesList.setCellFactory(param -> new ListCell<Category>() {
+            public void updateItem(Category category, boolean empty) {
+                super.updateItem(category, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+
+                } else {
+
+                    setText(category.getName());
+
+                }
+            }
+                });
 
 
         SerieService serieService=new SerieService();
@@ -108,6 +136,7 @@ public class SeriesController implements Initializable {
 
         for(int i=0;i< arrayList.size();i++){
             Serie serie=(Serie ) arrayList.get(i);
+            serie.setCategories(serieService.getSerieCategories(serie.getId()));
             seriesList.add( serie);
         }
         ObservableList observableList = FXCollections.observableArrayList(seriesList);
@@ -166,6 +195,20 @@ public class SeriesController implements Initializable {
                 views_countTextField.setText(String.valueOf(listViewSeries.getSelectionModel().getSelectedItem().getViews_count()));
                 studio_nameTextField.setText(listViewSeries.getSelectionModel().getSelectedItem().getStudio_name());
 
+
+                ArrayList<Category> serieCategories=(ArrayList) serieService.getSerieCategories(listViewSeries.getSelectionModel().getSelectedItem().getId());
+                    categoriesList.getSelectionModel().clearSelection();
+                    for(int i=0;i<serieCategories.size();i++){
+                        for(int j=0;j<categoriesList.getItems().size();j++){
+                            Category categoryItem=(Category) categoriesList.getItems().get(j);
+                            if(serieCategories.get(i).getId()== categoryItem.getId() ){
+                                categoriesList.getSelectionModel().select(j);
+                            }
+                        }
+
+                    }
+
+
                 manageTitle.setText("Update Serie "+listViewSeries.getSelectionModel().getSelectedItem().getId());
                 nameErrorValidationText.setText("");
                 addButton.setVisible(false);
@@ -212,10 +255,19 @@ public class SeriesController implements Initializable {
                     newSerie.setId(listViewSeries.getSelectionModel().getSelectedItem().getId());
 
 
-                    serieService.updateSerie(newSerie,listViewSeries.getSelectionModel().getSelectedItem().getId());
-                    listViewSeries.getItems().remove(listViewSeries.getSelectionModel().getSelectedItem());
 
+                    serieService.updateSerie(newSerie,listViewSeries.getSelectionModel().getSelectedItem().getId());
+                    serieService.cleanAllSerieCategories(listViewSeries.getSelectionModel().getSelectedItem().getId());
+                    for(int i=0;i<categoriesList.getSelectionModel().getSelectedItems().size();i++){
+                        Category selectedCategory=(Category) categoriesList.getSelectionModel().getSelectedItems().get(i);
+
+                        serieService.addSerieCategory(newSerie.getId(),selectedCategory.getId());
+                    }
+
+                    listViewSeries.getItems().remove(listViewSeries.getSelectionModel().getSelectedItem());
                     listViewSeries.getItems().add(newSerie);
+
+
                     Alert alertt = new Alert(Alert.AlertType.INFORMATION, "Serie updated !");
                     alertt.setTitle("Serie updated !");
                     Stage stagee = (Stage) alertt.getDialogPane().getScene().getWindow();
@@ -232,6 +284,7 @@ public class SeriesController implements Initializable {
                     views_countTextField.setText("");
                     studio_nameTextField.setText("");
 
+                    categoriesList.getSelectionModel().clearSelection();
                     manageTitle.setText("Add new Serie ");
                     nameErrorValidationText.setText("");
                     addButton.setVisible(true);
@@ -253,11 +306,12 @@ public class SeriesController implements Initializable {
             ratingTextField.setText("");
             views_countTextField.setText("");
             studio_nameTextField.setText("");
-
+            categoriesList.getSelectionModel().clearSelection();
             manageTitle.setText("Add new Serie ");
             nameErrorValidationText.setText("");
             addButton.setVisible(true);
             updateButton.setVisible(false);
+            deleteButton.setVisible(false);
             cancelUpdateButton.setVisible(false);
         });
 
@@ -304,6 +358,8 @@ public class SeriesController implements Initializable {
                    nameErrorValidationText.setText("Views count  must be an integer > 0 !");
                }else if(studio_nameTextField.getText().length()<3){
                    nameErrorValidationText.setText("Studio name must have at least 3 characters !");
+               }else if(!(categoriesList.getSelectionModel().getSelectedItems().size()>0)){
+                   nameErrorValidationText.setText("You must select at least one category");
                }else {
                    Serie newSerie=new Serie();
                    newSerie.setName(nameTextField.getText());
@@ -328,7 +384,14 @@ public class SeriesController implements Initializable {
 
                     SerieService serieService=new SerieService();
                     int res=serieService.createSerie(newSerie);
-                        newSerie.setId(res);
+                   newSerie.setId(res);
+                   for(int i=0;i<categoriesList.getSelectionModel().getSelectedItems().size();i++){
+                       Category selectedCategory=(Category) categoriesList.getSelectionModel().getSelectedItems().get(i);
+
+                       serieService.addSerieCategory(newSerie.getId(),selectedCategory.getId());
+                   }
+
+
 
                    listViewSeries.getItems().add(newSerie);
                    Alert alertt = new Alert(Alert.AlertType.INFORMATION, "Serie added !");
@@ -346,7 +409,7 @@ public class SeriesController implements Initializable {
                    ratingTextField.setText("");
                    views_countTextField.setText("");
                    studio_nameTextField.setText("");
-
+                   categoriesList.getSelectionModel().clearSelection();
                    manageTitle.setText("Add new Serie ");
                    nameErrorValidationText.setText("");
                    addButton.setVisible(true);

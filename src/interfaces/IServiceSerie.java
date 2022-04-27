@@ -21,4 +21,6 @@ public interface IServiceSerie {
     public void updateSerie(Serie s, int id);
     public void deleteSerie(int id);
     public List<Category> getSerieCategories(int serieID);
+
+    public void cleanAllSerieCategories(int id);
 }

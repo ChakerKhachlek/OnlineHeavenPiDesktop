@@ -2,8 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,19 +13,12 @@
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.dashboard.categories.CategoriesController">
   
     <children>
-      <TableView fx:id="listCategories" layoutX="96.0" layoutY="39.0" prefHeight="377.0" prefWidth="269.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="391.0" AnchorPane.topAnchor="39.0">
-        <columns>
-          <TableColumn fx:id="id" prefWidth="56.0" text="Id" />
-          <TableColumn fx:id="name" prefWidth="98.0" text="Name" />
-            <TableColumn fx:id="editCol" prefWidth="100.0" text="Edit" />
-        </columns>
-      </TableView>
       <AnchorPane id="AnchorPane" layoutX="365.0" layoutY="39.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="377.0" prefWidth="377.0">
          <children>
-            <Label layoutX="88.0" layoutY="134.0" text="Name" />
-            <TextField fx:id="nameTextField" layoutX="136.0" layoutY="130.0" />
-            <JFXButton fx:id="addButton" layoutX="137.0" layoutY="213.0" style="-fx-background-color: #1976D2; -fx-padding: 10;" text="Add Category" textFill="WHITE" />
-            <Text fx:id="manageTitle" layoutX="80.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add new Category" textAlignment="CENTER">
+            <Label layoutX="49.0" layoutY="134.0" text="Name" />
+            <TextField fx:id="nameTextField" layoutX="104.0" layoutY="130.0" />
+            <JFXButton fx:id="addButton" layoutX="107.0" layoutY="213.0" style="-fx-background-color: #1976D2; -fx-padding: 10;" text="Add Category" textFill="WHITE" />
+            <Text fx:id="manageTitle" layoutX="49.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add new Category" textAlignment="CENTER">
                <font>
                   <Font name="Bauhaus 93" size="26.0" />
                </font>
@@ -34,6 +26,7 @@
             <Label fx:id="nameErrorValidationText" layoutX="88.0" layoutY="185.0" textFill="RED" />
             <JFXButton fx:id="updateButton" layoutX="137.0" layoutY="213.0" style="-fx-background-color: #1976D2; -fx-padding: 10;" text="Update Category" textFill="WHITE" visible="false" />
             <JFXButton fx:id="cancelUpdateButton" layoutX="266.0" layoutY="213.0" style="-fx-background-color: #FF1744; -fx-padding: 10;" text="Cancel" textFill="WHITE" visible="false" />
+            <JFXButton fx:id="delButton" layoutX="323.0" layoutY="27.0" prefHeight="29.0" prefWidth="54.0" style="-fx-background-color: #FF1744; -fx-padding: 6;" text="Del" textFill="WHITE" visible="false" />
          </children>
       </AnchorPane>
       <ImageView fx:id="printToPdfButton" fitHeight="36.0" fitWidth="36.0" layoutX="35.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
@@ -41,6 +34,7 @@
             <Image url="@../images/printer_icon.png" />
          </image>
       </ImageView>
+      <ListView fx:id="listCategories" layoutX="107.0" layoutY="46.0" prefHeight="377.0" prefWidth="252.0" />
       
    </children>
 </AnchorPane>

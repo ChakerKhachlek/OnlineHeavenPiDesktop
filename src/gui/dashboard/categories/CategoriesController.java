@@ -9,6 +9,8 @@ import java.io.IOException;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -40,6 +42,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import models.Serie;
 import services.CategoryService;
 
 /**
@@ -50,15 +53,9 @@ import services.CategoryService;
 public class CategoriesController implements Initializable {
 
     @FXML
-    private TableView<Category> listCategories;
-     @FXML
-    private TableColumn<Category, Integer> id;
+    private ListView<Category> listCategories;
     @FXML
-    private TableColumn<Category, String> name;
-
-    @FXML
-    private TableColumn<Category, String> editCol;
-
+    private Button delButton;
     @FXML
     private Button updateButton;
     @FXML
@@ -88,78 +85,38 @@ public class CategoriesController implements Initializable {
         ArrayList arrayList= (ArrayList) categoryService.readCategories();
         ObservableList observableList = FXCollections.observableArrayList(arrayList);
         listCategories.setItems(observableList);
-         id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        listCategories.setCellFactory(param -> new ListCell<Category>() {
+            private ImageView imageView = new ImageView();
+            public void updateItem(Category category, boolean empty) {
+                super.updateItem(category, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
 
-        //add cell of button edit
-        Callback<TableColumn<Category, String>, TableCell<Category, String>> cellFoctory = (TableColumn<Category, String> param) -> {
-            // make cell containing buttons
-            final TableCell<Category, String> cell = new TableCell<Category, String>() {
-                @Override
-                public void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-                    //that cell created only on non-empty rows
-                    if (empty) {
-                        setGraphic(null);
-                        setText(null);
+                } else {
 
-                    } else {
+                    setText(category.getId()+" - "+category.getName());
 
-                        FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
-                        FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
-
-                        deleteIcon.setStyle(
-                                " -fx-cursor: hand ;"
-                                        + "-glyph-size:28px;"
-                                        + "-fx-fill:#ff1744;"
-                        );
-                        editIcon.setStyle(
-                                " -fx-cursor: hand ;"
-                                        + "-glyph-size:28px;"
-                                        + "-fx-fill:#00E676;"
-                        );
-                        deleteIcon.setOnMouseClicked(event -> {
-                            categoryService.deleteCategory(listCategories.getSelectionModel().getSelectedItem().getId());
-                            Alert alert=new Alert(Alert.AlertType.INFORMATION, "Category deleted !");
-                            alert.setTitle("Category deleted !");
-                            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                            stage.getIcons().add(new Image(this.getClass().getResource("/icons/logosmall2.png").toString()));
-                            refreshListCategories();
-                            alert.show();
-                            nameTextField.setText("");
-                            manageTitle.setText("Add new Category ");
-                            nameErrorValidationText.setText("");
-                            addButton.setVisible(true);
-                            updateButton.setVisible(false);
-                            cancelUpdateButton.setVisible(false);
-
-                        });
-                        editIcon.setOnMouseClicked(event -> {
-                            nameTextField.setText(listCategories.getSelectionModel().getSelectedItem().getName());
-                            manageTitle.setText("Update Category "+listCategories.getSelectionModel().getSelectedItem().getId());
-                            nameErrorValidationText.setText("");
-                            addButton.setVisible(false);
-                            updateButton.setVisible(true);
-                            cancelUpdateButton.setVisible(true);
-                        });
-
-                        HBox managebtn = new HBox(editIcon, deleteIcon);
-                        managebtn.setStyle("-fx-alignment:center");
-                        HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
-                        HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
-
-                        setGraphic(managebtn);
-
-                        setText(null);
-
-                    }
                 }
+            }
+        });
+        listCategories.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Category>() {
 
-            };
+            @Override
+            public void changed(ObservableValue<? extends Category> observable, Category oldValue, Category newValue) {
+                nameTextField.setText(listCategories.getSelectionModel().getSelectedItem().getName());
+                manageTitle.setText("Update Category "+listCategories.getSelectionModel().getSelectedItem().getId());
+                nameErrorValidationText.setText("");
+                addButton.setVisible(false);
+                updateButton.setVisible(true);
+                cancelUpdateButton.setVisible(true);
 
-            return cell;
-        };
-        editCol.setCellFactory(cellFoctory);
+                delButton.setVisible(true);
+            }
+        });
+
+
+
         addButton.setOnAction(event -> {
             addCategory(new ActionEvent());
         });
@@ -174,12 +131,18 @@ public class CategoriesController implements Initializable {
                     System.out.println(nameTextField.getText());
 
                     categoryService.updateCategory(nameTextField.getText(),listCategories.getSelectionModel().getSelectedItem().getId());
+                    Category newCategory=new Category();
+                    newCategory.setId(listCategories.getSelectionModel().getSelectedItem().getId());
+                    newCategory.setName(nameTextField.getText());
+                    listCategories.getItems().remove(listCategories.getSelectionModel().getSelectedItem());
+                    listCategories.getItems().add(newCategory);
+
                     Alert alertt = new Alert(Alert.AlertType.INFORMATION, "Category updated !");
                     alertt.setTitle("Category updated !");
                     Stage stagee = (Stage) alertt.getDialogPane().getScene().getWindow();
                     stagee.getIcons().add(new Image(this.getClass().getResource("/icons/logosmall2.png").toString()));
                     alertt.show();
-                    refreshListCategories();
+
 
                     nameTextField.setText("");
                     manageTitle.setText("Add new Category ");
@@ -187,6 +150,8 @@ public class CategoriesController implements Initializable {
                     addButton.setVisible(true);
                     updateButton.setVisible(false);
                     cancelUpdateButton.setVisible(false);
+
+
                 }
 
 
@@ -195,6 +160,24 @@ public class CategoriesController implements Initializable {
             }
         });
         cancelUpdateButton.setOnAction(event->{
+            nameTextField.setText("");
+            manageTitle.setText("Add new Category ");
+            nameErrorValidationText.setText("");
+            addButton.setVisible(true);
+            updateButton.setVisible(false);
+            cancelUpdateButton.setVisible(false);
+        });
+
+        delButton.setOnAction(event -> {
+            categoryService.deleteCategory(listCategories.getSelectionModel().getSelectedItem().getId());
+            Alert alert=new Alert(Alert.AlertType.INFORMATION, "Category deleted !");
+            alert.setTitle("Category deleted !");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(this.getClass().getResource("/icons/logosmall2.png").toString()));
+
+            listCategories.getItems().remove(listCategories.getSelectionModel().getSelectedItem());
+            delButton.setVisible(false);
+            alert.show();
             nameTextField.setText("");
             manageTitle.setText("Add new Category ");
             nameErrorValidationText.setText("");
@@ -223,13 +206,16 @@ public class CategoriesController implements Initializable {
                    System.out.println(nameTextField.getText());
                    CategoryService categoryService = new CategoryService();
                    Category newCategory = new Category(nameTextField.getText());
-                   categoryService.createCategory(newCategory);
+                   int res = categoryService.createCategory(newCategory);
+                   newCategory.setId(res);
+                   listCategories.getItems().remove(listCategories.getSelectionModel().getSelectedItem());
+                   listCategories.getItems().add(newCategory);
                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Category added !");
                    alert.setTitle("Category created !");
                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
                    stage.getIcons().add(new Image(this.getClass().getResource("/icons/logosmall2.png").toString()));
                    alert.show();
-                   refreshListCategories();
+
                }
 
 
@@ -240,14 +226,7 @@ public class CategoriesController implements Initializable {
 
 
 
-    public void refreshListCategories(){
-        CategoryService categoryService=new CategoryService();
-        ArrayList arrayList= (ArrayList) categoryService.readCategories();
-        ObservableList observableList = FXCollections.observableArrayList(arrayList);
-        listCategories.setItems(observableList);
 
-
-    }
 
     public void exportToPDF(){
         PrinterJob job = PrinterJob.createPrinterJob();

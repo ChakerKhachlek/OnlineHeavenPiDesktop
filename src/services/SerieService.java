@@ -86,6 +86,24 @@ public class SerieService implements IServiceSerie{
     }
 
     @Override
+    public void cleanAllSerieCategories(int id) {
+        String req = "DELETE FROM serie_category WHERE serie_id ='"+id+"'";
+        Statement ste;
+        try {
+
+            ste = cnx.createStatement();
+            System.out.println(req);
+            ste.executeUpdate(req);
+            System.out.println("Serie categories cleaned "+id );
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    @Override
     public List<Serie> readSeries() {
         ArrayList<Serie> series = new ArrayList<>();
         
