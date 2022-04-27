@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.dashboard.Controller">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.dashboard.DashboardMenuController">
    <children>
       <AnchorPane prefHeight="46.0" prefWidth="800.0" style="-fx-background-color: #002d40;">
          <children>
@@ -44,32 +44,32 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" prefHeight="38.0" prefWidth="179.0" text="Dashboard">
+                  <JFXButton fx:id="dashboardMenuButton" alignment="BASELINE_LEFT" buttonType="RAISED" prefHeight="38.0" prefWidth="179.0" text="Dashboard">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="179.0" text="Manage Categories">
+                  <JFXButton fx:id="categoriesMenuButton" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="179.0" text="Manage Categories">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="58.0" prefHeight="38.0" prefWidth="179.0" text="Manage Series">
+                  <JFXButton fx:id="seriesMenuButton" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="58.0" prefHeight="38.0" prefWidth="179.0" text="Manage Series">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="106.0" prefHeight="38.0" prefWidth="179.0" text="Manage Seasons">
+                  <JFXButton fx:id="seasonsMenuButton" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="106.0" prefHeight="38.0" prefWidth="179.0" text="Manage Seasons">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="139.0" prefHeight="38.0" prefWidth="179.0" text="Manage Episodes">
+                  <JFXButton fx:id="episodesMenuButton" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="139.0" prefHeight="38.0" prefWidth="179.0" text="Manage Episodes">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="154.0" prefHeight="38.0" prefWidth="179.0" text="Manage Users">
+                  <JFXButton fx:id="usersMenuButton" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="154.0" prefHeight="38.0" prefWidth="179.0" text="Manage Users">
                      <font>
                         <Font size="16.0" />
                      </font>

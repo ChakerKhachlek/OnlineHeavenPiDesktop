@@ -12,6 +12,8 @@
       <root url="jar://$PROJECT_DIR$/lib/jfoenix-8.0.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-8.0.28.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/protobuf-java-3.11.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/fontawesomefx-8.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/fontawesomefx-glyphsbrowser-all-1.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
