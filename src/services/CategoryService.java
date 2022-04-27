@@ -28,8 +28,8 @@ public class CategoryService implements IServiceCategory{
     Connection cnx = instance.getCnx();
        
     @Override
-    public void createCategory(Category c) {
-        
+    public int createCategory(Category c) {
+        int res=0;
         //request
 
        String SQL_INSERT = "INSERT INTO `CATEGORY` (`name`) VALUES ('"+c.getName()+"')";
@@ -37,9 +37,15 @@ public class CategoryService implements IServiceCategory{
         try{
            
            ste = cnx.createStatement();
-             ste.executeUpdate(SQL_INSERT);
+            ste.executeUpdate(SQL_INSERT,Statement.RETURN_GENERATED_KEYS);
             System.out.println("Category created !");
-            
+            try (ResultSet generatedKeys = ste.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    res= (int) generatedKeys.getLong(1);
+                } else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
             
         } catch (SQLException e) {
            
@@ -49,7 +55,7 @@ public class CategoryService implements IServiceCategory{
             e.printStackTrace();
             
         }
-        
+        return res;
         
     }
     

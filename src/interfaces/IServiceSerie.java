@@ -14,11 +14,13 @@ import models.Serie;
  */
 public interface IServiceSerie {
     
-    public void createSerie(Serie s);
+    public int createSerie(Serie s);
     public Serie getSerieById(int id);
     public void addSerieCategory(int serieId,int CategoryId);
     public List<Serie> readSeries();
     public void updateSerie(Serie s, int id);
     public void deleteSerie(int id);
     public List<Category> getSerieCategories(int serieID);
+
+    public void cleanAllSerieCategories(int id);
 }

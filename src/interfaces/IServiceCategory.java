@@ -13,7 +13,7 @@ import models.Serie;
  * @author Lord Solari
  */
 public interface IServiceCategory {
-     public void createCategory(Category c);
+     public int createCategory(Category c);
      public List<Category> readCategories();
      public Category getCategoryById(int id);
      public void updateCategory(String name, int id);
