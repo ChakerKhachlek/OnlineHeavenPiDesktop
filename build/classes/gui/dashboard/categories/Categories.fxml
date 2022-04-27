@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: 212121;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.dashboard.categories.CategoriesController">
+  
+    <children>
+      <TableView fx:id="listCategories" layoutX="43.0" layoutY="65.0" prefHeight="302.0" prefWidth="309.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="248.0" AnchorPane.topAnchor="65.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="name" prefWidth="79.0" text="Name" />
+            <TableColumn fx:id="update" prefWidth="75.0" text="Update" />
+            <TableColumn fx:id="id11" prefWidth="75.0" text="Delete" />
+        </columns>
+      </TableView>
+      <Button id="newCategory" layoutX="429.0" layoutY="178.0" mnemonicParsing="false" onAction="#newCategory" text="New Category" />
+      
+   </children>
+</AnchorPane>

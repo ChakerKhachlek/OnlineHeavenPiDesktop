@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="JavaFX18">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/JavaFX18/javafx.graphics.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JavaFX18/javafx.fxml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JavaFX18/javafx-swt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JavaFX18/javafx.media.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JavaFX18/javafx.controls.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JavaFX18/javafx.web.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JavaFX18/javafx.base.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JavaFX18/javafx.swing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jfoenix-8.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-8.0.28.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/protobuf-java-3.11.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

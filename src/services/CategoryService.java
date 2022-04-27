@@ -110,7 +110,7 @@ public class CategoryService implements IServiceCategory{
                 
             }
             
-            System.out.println(categories);
+            System.out.println(categories.toString());
             
         } catch (SQLException ex) {
           ex.printStackTrace();
