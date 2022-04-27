@@ -28,6 +28,18 @@
                   <Image url="@images/exit.png" />
                </image>
             </ImageView>
+            <Label fx:id="streamingPortal" layoutX="83.0" layoutY="7.0" text="Streaming Portal" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="41.0" opacity="0.79" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/portal%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Bauhaus 93" size="13.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane layoutY="46.0" prefHeight="454.0" prefWidth="44.0" style="-fx-background-color: white;" />

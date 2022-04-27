@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="subPane" prefHeight="500.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.streaming.StreamingMenuController">
+   <children>
+      <AnchorPane prefHeight="46.0" prefWidth="900.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="exit" fitHeight="24.0" fitWidth="24.0" layoutX="862.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="11.0">
+               <image>
+                  <Image url="@../dashboard/images/exit.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="maximize" fitHeight="18.0" fitWidth="24.0" layoutX="833.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="14.0">
+               <image>
+                  <Image url="@../dashboard/images/expand.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="minimize" fitHeight="24.0" fitWidth="24.0" layoutX="799.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="11.0">
+               <image>
+                  <Image url="@../dashboard/images/minus.png" />
+               </image>
+            </ImageView>
+            <MenuButton fx:id="CategoriesMenuButton" layoutX="96.0" layoutY="11.0" mnemonicParsing="false" prefWidth="130.0" style="-fx-background-color: #212121;" text="Category" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="11.0">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <font>
+                  <Font name="Bauhaus 93" size="12.0" />
+               </font>
+            </MenuButton>
+            <TextField fx:id="searchTextField" layoutX="534.0" layoutY="11.0" prefWidth="153.0" style="-fx-background-color: #1A237E;" styleClass="-fx-text-fill: white;" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="213.0" AnchorPane.topAnchor="11.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="content" layoutX="-10.0" layoutY="46.0" prefHeight="455.0" prefWidth="910.0" style="-fx-background-color: #311B92;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0" />
+   </children>
+</AnchorPane>
