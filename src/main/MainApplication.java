@@ -26,7 +26,7 @@ public class MainApplication extends Application {
     public void start(Stage primaryStage) throws IOException{
     
      
-         Parent root = FXMLLoader.load(getClass().getResource("../gui/dashboard/DashboardMenuLayout.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/dashboard/DashboardMenuLayout.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
         root.setOnMousePressed(event -> {
