@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -30,27 +31,35 @@ public class SerieService implements IServiceSerie{
     Connection cnx = instance.getCnx();
 
     @Override
-    public void createSerie(Serie s) {
-        
+    public int createSerie(Serie s) {
+        int res=0;
         //request
+
         String SQL_INSERT = "INSERT INTO SERIE (`name`, `description`, `image_local_url`, `trailer`, `release_date`, `rating`, `views_count`,`created_at`, `studio_name`)"
-                + " VALUES ('"+s.getName()+"','"+s.getDescription()+"','"+s.getImage_local_url()+"','"+s.getTrailer()+"','"+s.getRelease_date()+"',"+s.getRating()+","+s.getViews_count()+",'"+s.getCreated_at()+"','"+s.getStudio_name()+"')";
-     Statement ste;
+                + " VALUES ('" + s.getName() + "','" + s.getDescription() + "','" + s.getImage_local_url() + "','" + s.getTrailer() + "','" + s.getRelease_date() + "'," + s.getRating() + "," + s.getViews_count() + ",'" + String.valueOf(LocalDate.now()) + "','" + s.getStudio_name() + "')";
+        Statement ste;
         try {
-           
-            
-           ste = cnx.createStatement();
-           System.out.println(SQL_INSERT);
-             ste.executeUpdate(SQL_INSERT);
-              System.out.println("Serie created !");
-            
+
+
+            ste = cnx.createStatement();
+            System.out.println(SQL_INSERT);
+            ste.executeUpdate(SQL_INSERT,Statement.RETURN_GENERATED_KEYS);
+            System.out.println("Serie created !");
+            try (ResultSet generatedKeys = ste.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    res= (int) generatedKeys.getLong(1);
+                } else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
         } catch (SQLException ex) {
-            
-             System.err.format("SQL State: %s\n%s", ex.getSQLState(), ex.getMessage());
+
+            System.err.format("SQL State: %s\n%s", ex.getSQLState(), ex.getMessage());
         }
-        
-        
+        return res;
     }
+        
+
     
    @Override
     public List<Category> getSerieCategories(int serieID) {

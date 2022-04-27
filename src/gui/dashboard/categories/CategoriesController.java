@@ -126,9 +126,12 @@ public class CategoriesController implements Initializable {
                             stage.getIcons().add(new Image(this.getClass().getResource("/icons/logosmall2.png").toString()));
                             refreshListCategories();
                             alert.show();
-                            addButton.setVisible(false);
-
-                            updateButton.setVisible(true);
+                            nameTextField.setText("");
+                            manageTitle.setText("Add new Category ");
+                            nameErrorValidationText.setText("");
+                            addButton.setVisible(true);
+                            updateButton.setVisible(false);
+                            cancelUpdateButton.setVisible(false);
 
                         });
                         editIcon.setOnMouseClicked(event -> {

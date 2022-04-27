@@ -112,6 +112,9 @@ public class DashboardMenuController implements Initializable {
         categoriesMenuButton.setOnAction(event->{
             LoadPage("./categories/Categories.fxml");
         });
+        seriesMenuButton.setOnAction(event->{
+            LoadPage("./series/Series.fxml");
+        });
     }
     private void LoadPage(String page){
         Parent root = null;

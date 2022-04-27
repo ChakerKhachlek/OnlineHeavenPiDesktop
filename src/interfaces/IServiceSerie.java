@@ -14,7 +14,7 @@ import models.Serie;
  */
 public interface IServiceSerie {
     
-    public void createSerie(Serie s);
+    public int createSerie(Serie s);
     public Serie getSerieById(int id);
     public void addSerieCategory(int serieId,int CategoryId);
     public List<Serie> readSeries();
