@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="libaries_icons">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/classes/libaries_icons/fontawesomefx-8.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/classes/libaries_icons/mysql-connector-java-5.1.42-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/classes/libaries_icons/fontawesomefx-glyphsbrowser-all-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/classes/libaries_icons/jfoenix-8.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
