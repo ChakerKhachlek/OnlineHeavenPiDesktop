@@ -145,8 +145,9 @@ public class EpisodeService implements IServiceEpisode{
     }
     
     @Override
-    public void recherche_episode(String nom){
+    public String recherche_episode(String nom){
              int i=0;
+             String azer="";
      try {
             Statement st = cnx.createStatement();
             String req = "SELECT * FROM episode";
@@ -154,10 +155,11 @@ public class EpisodeService implements IServiceEpisode{
            
             while (rs.next()) {                
                 
-            if (rs.getString(2).equals(nom))
-            { System.out.println(" name : "+rs.getString(2)+"\n episode_number : "+rs.getInt(3)+"\n video_url : "+rs.getString(4)+"\n") ;
+            if (rs.getString(3).equals(nom))
+            { System.out.println(" name : "+rs.getString(3)+"\n episode_number : "+rs.getInt(4)+"\n video_url : "+rs.getString(5)+"\n-----------------------------------------") ;
             i=1;
-           
+            azer=azer+" name : "+rs.getString(3)+"\n episode_number : "+rs.getInt(4)+"\n video_url : "+rs.getString(5)+"\n--------------------------------------------\n";
+            System.out.println(azer);
             } 
                 
             }
@@ -167,13 +169,13 @@ public class EpisodeService implements IServiceEpisode{
         }
         if (i==0)
         {System.out.println("l'episode n'existe pas");}
-    
+        return azer;
     
     }
     @Override
     public boolean url_test(String url){
         boolean test=false;
-        if (url.substring(0,7).equals("http://"))
+        if (url.startsWith("https://"))
             {test=true;}
     
         return test;
@@ -239,11 +241,12 @@ public class EpisodeService implements IServiceEpisode{
     }
     
     @Override
-    public void create_episode_final(Episode e){
-    
+    public int create_episode_final(Episode e){
+            
+           int aze=0;
            String req;
            if(numero_episode_unique(e.getname(),e.getepisode_number())==true){
-        req = "INSERT INTO `episode`(`id`,`name`, `episode_number`, `video_url`) VALUES (?,?,?,?) ";
+        req = "INSERT INTO `episode`(`id`,season_id,`name`, `episode_number`, `video_url`) VALUES (?,?,?,?,?) ";
         try {
             PreparedStatement st = cnx.prepareStatement(req);
             //st.setInt(1, id_auto());
@@ -251,12 +254,13 @@ public class EpisodeService implements IServiceEpisode{
           // System.out.println("episode ajoutée avec succes.");
             
                 { st.setInt(1, id_auto());
-            st.setString(2, e.getname());
-            st.setInt(3, e.getepisode_number());}
+                st.setInt(2,e.getseason_id());
+            st.setString(3, e.getname());
+            st.setInt(4, e.getepisode_number());}
            // else{/*st.setInt(3, 1);st.setString(4, "azerty"); delete_episode(e.getid());*/}
             if(url_test(e.getvideo_url())==true)
-                {st.setString(4, e.getvideo_url());}
-            else{st.setString(4, imposer_form_url(e.getvideo_url()));}
+                {st.setString(5, e.getvideo_url());}
+            else{st.setString(5, imposer_form_url(e.getvideo_url()));}
            st.executeUpdate();
              System.out.println("episode ajoutée avec succes.");
             
@@ -266,6 +270,59 @@ public class EpisodeService implements IServiceEpisode{
         }
         
     }
-           else{ System.out.println("impossible d'ajouter l'episode"); }
+           else{ System.out.println("impossible d'ajouter l'episode");
+           aze=1;}
+           return aze;
     }
+      @Override
+    public void delete_episode_f(String nom,int num){
+          String req = "DELETE FROM `episode` WHERE name=? and episode_number=? ";
+    try{
+    PreparedStatement st = cnx.prepareStatement(req);
+            st.setString(1, nom);
+            st.setInt(2, num);
+            st.executeUpdate();
+            System.out.println("delete");
+    }
+    catch  (SQLException ex) {
+            
+            ex.printStackTrace();
+    
+    }
+    
+    
+    
+    }
+        @Override
+        public void update_episode_final(Episode e){
+        String req = "UPDATE episode SET name=? , episode_number=? , video_url=? WHERE id=? ";
+        try {
+         
+           int i=e.getid();
+           String nom = e.getname();
+           
+      
+           int numero = e.getepisode_number();
+           
+           
+          
+           String url = e.getvideo_url();
+           /////////////////  rq: pour chaque insertion de chaine par clavier il faut creer un new scanner
+           
+           PreparedStatement st = cnx.prepareStatement(req);
+            st.setString(1, nom);
+            st.setInt(2, numero);
+            st.setString(3, url);
+            st.setInt(4, i);
+            st.executeUpdate();
+            System.out.println("update avec succes");
+    } 
+    catch (SQLException ex) {
+            
+            ex.printStackTrace();
+    }
+    }
+    
+    
+    
 }

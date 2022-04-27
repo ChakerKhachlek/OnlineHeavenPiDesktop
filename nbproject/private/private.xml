@@ -3,25 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/models/User.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/models/Category.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/tests/MainTestUser.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/interfaces/IServicePost.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/PostService.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/models/Post.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/tests/MainTestSeasonEpisode.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/interfaces/IServiceSerie.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/SeasonService.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/tests/MainTestPost.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/main/MainApplication.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/interfaces/IServiceCategory.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/EpisodeService.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/interfaces/IServiceUser.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/SerieService.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/UserService.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/models/Serie.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/CategoryService.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/database/DatabaseConnexion.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/pageajouter1.jpeg</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/interfaces/IServiceEpisode.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/Web_videoController.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/narutoep1.jpg</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/models/Category.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/supp_episode.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/arriereplan1.jpg</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/delete1.jpg</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/dragonball.jpg</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/online.png</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/recherche_epi.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/jujutsu.jpg</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/VideoController.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/web_vid.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/video_ep.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/database/DatabaseConnexion.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/models/Episode.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/tests/MainTestCategorySerie.java</file>
+            <file>file:/C:/Users/msi/Downloads/integration_projet/src/gui/ajout_epi.java</file>
         </group>
     </open-files>
 </project-private>
