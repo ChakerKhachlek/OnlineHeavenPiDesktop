@@ -29,6 +29,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import models.Category;
 import models.Serie;
+import models.User;
 import services.CategoryService;
 import services.SerieService;
 
@@ -45,6 +46,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import java.io.IOException;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  * FXML Controller class
@@ -128,6 +143,8 @@ public class SeriesController implements Initializable {
                 }
             }
                 });
+
+
 
 
         SerieService serieService=new SerieService();
@@ -334,6 +351,8 @@ public class SeriesController implements Initializable {
                 event.consume();
             }
         });
+
+
     }
     public void addSerie(ActionEvent e){
            try {
@@ -352,7 +371,7 @@ public class SeriesController implements Initializable {
                    nameErrorValidationText.setText("Image url must be valid !");
                }else if(!IsMatch(trailerTextField.getText(),regex)){
                    nameErrorValidationText.setText("Trailer url must be valid !");
-               }else if(!(ratingTextField.getText().length()>0) || !isNumeric(ratingTextField.getText()) || !(Integer.valueOf(ratingTextField.getText())<10)|| !(Integer.valueOf(ratingTextField.getText())>0)){
+               }else if(!(ratingTextField.getText().length()>0) || !isNumeric(ratingTextField.getText()) || !(Double.valueOf(ratingTextField.getText())<10)|| !(Double.valueOf(ratingTextField.getText())>0)){
                    nameErrorValidationText.setText("Rating must be an integer between 0 and 10 !");
                }else if(!(views_countTextField.getText().length()>0) || !isNumeric(views_countTextField.getText())||  !(Integer.valueOf(views_countTextField.getText())>0)){
                    nameErrorValidationText.setText("Views count  must be an integer > 0 !");
@@ -416,6 +435,10 @@ public class SeriesController implements Initializable {
                    updateButton.setVisible(false);
                    cancelUpdateButton.setVisible(false);
 
+                   User testUser=new User();
+                   testUser.setEmail("chaker.khachlek@esprit.tn");
+                   sendEmail(testUser,newSerie);
+
                }
 
 
@@ -423,7 +446,6 @@ public class SeriesController implements Initializable {
                Logger.getLogger(SeriesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
 
 
@@ -436,6 +458,57 @@ public class SeriesController implements Initializable {
             job.showPrintDialog(addButton.getScene().getWindow());
             job.printPage(listViewSeries);
             job.endJob();
+
+    }
+
+    public void sendEmail(User user, Serie serie){
+
+        //authentication info
+        final String username = "online.heaven.tunisie";
+        final String password = "Solari123";
+        String fromEmail = "online.heaven.tunisie@gmail.com";
+        String toEmail = user.getEmail();
+
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username,password);
+            }
+        });
+        //Start our mail message
+        MimeMessage msg = new MimeMessage(session);
+        try {
+            msg.setFrom(new InternetAddress(fromEmail));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            msg.setSubject("New Serie Uploaded !");
+
+            Multipart emailContent = new MimeMultipart();
+
+            //Text body part
+            MimeBodyPart textBodyPart = new MimeBodyPart();
+            textBodyPart.setText(serie.getName() + " is here ! you can watch it anytime you want , with love PARADAOX SENATORS");
+
+            //Attachment body part.
+           // MimeBodyPart pdfAttachment = new MimeBodyPart();
+            //pdfAttachment.attachFile("/home/parallels/Documents/docs/javamail.pdf");
+
+            //Attach body parts
+            emailContent.addBodyPart(textBodyPart);
+           // emailContent.addBodyPart(pdfAttachment);
+
+            //Attach multipart to message
+            msg.setContent(emailContent);
+
+            Transport.send(msg);
+            System.out.println("Sent message");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
 
     }
     public class DateValidatorUsingDateFormat  {

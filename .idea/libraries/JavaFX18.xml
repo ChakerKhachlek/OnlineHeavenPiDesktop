@@ -14,6 +14,12 @@
       <root url="jar://$PROJECT_DIR$/lib/protobuf-java-3.11.4.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/fontawesomefx-8.9.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/fontawesomefx-glyphsbrowser-all-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Workshop Java-20220428T024308Z-001/Workshop Java/workshop serices-API PIDEV/workshop-Mail-master/mail-lib/dsn.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Workshop Java-20220428T024308Z-001/Workshop Java/workshop serices-API PIDEV/workshop-Mail-master/mail-lib/imap.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Workshop Java-20220428T024308Z-001/Workshop Java/workshop serices-API PIDEV/workshop-Mail-master/mail-lib/mailapi.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Workshop Java-20220428T024308Z-001/Workshop Java/workshop serices-API PIDEV/workshop-Mail-master/mail-lib/pop3.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Workshop Java-20220428T024308Z-001/Workshop Java/workshop serices-API PIDEV/workshop-Mail-master/mail-lib/SMSLib.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Workshop Java-20220428T024308Z-001/Workshop Java/workshop serices-API PIDEV/workshop-Mail-master/mail-lib/smtp.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
