@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class DatabaseConnexion {
     //DB CREDENTIALS
-    final static String URL = "jdbc:mysql://127.0.0.1:3306/espritpi";
+    final static String URL = "jdbc:mysql://127.0.0.1:3325/espritpi";
     final static String USERNAME = "root";
     final static String PASSWORD = "";
     

@@ -3,16 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/gui/dashboard/categories/AddCategory.fxml</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/gui/dashboard/categories/Categories.fxml</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/main/MainApplication.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/gui/dashboard/Controller.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/gui/dashboard/categories/UpdateCategoryController.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/tests/MainTestUser.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/gui/dashboard/categories/UpdateCategory.fxml</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/gui/dashboard/categories/CategoriesController.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/services/CategoryService.java</file>
-            <file>file:/C:/projects_codename/OnlineHeavenPiDesktop/src/gui/dashboard/Dashboard.fxml</file>
+            <file>file:/C:/Users/riadh/OneDrive/Bureau/desktop/OnlineHeavenPiDesktop/src/tests/MainTestSeasonEpisode.java</file>
+            <file>file:/C:/Users/riadh/OneDrive/Bureau/desktop/OnlineHeavenPiDesktop/src/tests/MainTestPost.java</file>
+            <file>file:/C:/Users/riadh/OneDrive/Bureau/desktop/OnlineHeavenPiDesktop/src/database/DatabaseConnexion.java</file>
+            <file>file:/C:/Users/riadh/OneDrive/Bureau/desktop/OnlineHeavenPiDesktop/src/tests/MainTestUser.java</file>
+            <file>file:/C:/Users/riadh/OneDrive/Bureau/desktop/OnlineHeavenPiDesktop/src/main/MainApplication.java</file>
+            <file>file:/C:/Users/riadh/OneDrive/Bureau/desktop/OnlineHeavenPiDesktop/src/tests/MainTestCategorySerie.java</file>
         </group>
     </open-files>
 </project-private>

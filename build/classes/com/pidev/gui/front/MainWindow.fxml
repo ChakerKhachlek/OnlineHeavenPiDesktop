@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="800.0"
+            prefHeight="500.0" style="-fx-background-color: #EEEEEE;"
+            stylesheets="@../../utils/MainStyle.css" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="com.pidev.gui.front.MainWindowController">
+    <AnchorPane fx:id="topBar" prefHeight="73.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+    <AnchorPane fx:id="content" layoutX="10.0" layoutY="10.0" prefHeight="388.0" prefWidth="800.0"
+                style="-fx-background-color: #EEEEFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0"/>
+</AnchorPane>
