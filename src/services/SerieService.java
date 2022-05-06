@@ -150,6 +150,27 @@ public class SerieService implements IServiceSerie{
         return series;
     }
 
+    public List<Serie> searchSerie(String search) {
+        ArrayList<Serie> series = new ArrayList<>();
+
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM serie WHERE name LIKE '%"+search+"%' OR description LIKE '%"+search+"%' OR release_date LIKE '%"+search+"%' OR studio_name LIKE '%"+search+"%'";
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+
+                series.add(new Serie(rs.getInt(1), rs.getString("name"), rs.getString("description"), rs.getString("image_local_url"), rs.getString("trailer"), rs.getString("release_date"),rs.getFloat("rating"),rs.getInt("views_count"),rs.getString("created_at"),rs.getString("studio_name")));
+
+            }
+            System.out.println(series);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return series;
+    }
 
     public List<Serie> getTopRatedSeries() {
         ArrayList<Serie> series = new ArrayList<>();

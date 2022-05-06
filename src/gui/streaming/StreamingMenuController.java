@@ -1,6 +1,8 @@
 package gui.streaming;
 
 import gui.streaming.anime_details.AnimeDetailsController;
+import gui.streaming.grid_list_multi_use.EpisodesListController;
+import gui.streaming.grid_list_multi_use.SerieListController;
 import gui.streaming.home.ItemController;
 import gui.streaming.home.MyListener;
 import javafx.event.ActionEvent;
@@ -56,14 +58,28 @@ public class StreamingMenuController implements Initializable {
         //homeButton click ends
 
 
-
+        SerieService serieService=new SerieService();
         //search start
         searchTextField.addEventHandler(KeyEvent.KEY_PRESSED, eventEnter -> {
             if (eventEnter.getCode() == KeyCode.ENTER) {
                 if (searchTextField.getText().equals("")) {
                 } else {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Search Clicked !" + searchTextField.getText());
-                    alert.show();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/streaming/grid_list_multi_use/GridList.fxml"));
+                    SerieListController serieListController =new SerieListController();
+
+
+                    serieListController.setSerieList(serieService.searchSerie(searchTextField.getText()));
+                    serieListController.setDisplayName("Search for "+ searchTextField.getText());
+
+                    loader.setController(serieListController);
+                    Parent root = null;
+                    try {
+                        root = loader.load();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+                    content.setCenter(root);
                 }
 
             }
@@ -71,8 +87,22 @@ public class StreamingMenuController implements Initializable {
         search.setOnMouseClicked(event -> {
             if (searchTextField.getText().equals("")) {
             } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Search Clicked !" + searchTextField.getText());
-                alert.show();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/streaming/grid_list_multi_use/GridList.fxml"));
+                SerieListController serieListController =new SerieListController();
+
+
+                serieListController.setSerieList(serieService.searchSerie(searchTextField.getText()));
+                serieListController.setDisplayName("Search for "+ searchTextField.getText());
+
+                loader.setController(serieListController);
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                content.setCenter(root);
             }
         });
         //search ends
@@ -85,9 +115,23 @@ public class StreamingMenuController implements Initializable {
         // create action event
         EventHandler<ActionEvent> eventMenuItem = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, ((MenuItem) e.getSource()).getId() + " Clicked !");
-                CategoriesMenuButton.setText( ((MenuItem) e.getSource()).getText());
-                alert.show();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/streaming/grid_list_multi_use/GridList.fxml"));
+                SerieListController serieListController =new SerieListController();
+
+                int id=Integer.valueOf(((MenuItem) e.getSource()).getId()+"");
+                serieListController.setSerieList(categoryService.getCategorySeries(id));
+                serieListController.setDisplayName("Category "+ ((MenuItem) e.getSource()).getText());
+
+                loader.setController(serieListController);
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                content.setCenter(root);
             }
         };
 

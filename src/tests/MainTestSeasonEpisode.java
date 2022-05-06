@@ -9,6 +9,7 @@ import models.Season;
 import services.EpisodeService;
 
 import services.SeasonService;
+import services.SerieService;
 
 
 /**
@@ -20,10 +21,8 @@ public class MainTestSeasonEpisode {
     
     public static void main(String[] args) {
 
-       SeasonService ps = new SeasonService();
-       EpisodeService pe = new EpisodeService();
-       System.out.println(ps.readSeasons());
-       System.out.println(pe.show_episodes());
+        SerieService serieService=new SerieService();
+        serieService.searchSerie("Solari");
        
         
         

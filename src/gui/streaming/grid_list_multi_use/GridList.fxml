@@ -13,7 +13,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane fx:id="content" layoutX="10.0" layoutY="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <BorderPane fx:id="content" layoutX="10.0" layoutY="-8.0" prefHeight="700.0" prefWidth="1680.0">
          <center>
             <AnchorPane>
                <children>
@@ -39,15 +39,19 @@
                               <Insets top="30.0" />
                            </VBox.margin>
                            <children>
-                              <ScrollPane fitToWidth="true" hbarPolicy="ALWAYS" prefViewportHeight="400.0" prefViewportWidth="400.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" HBox.hgrow="ALWAYS">
-                                 <content>
-                                    <GridPane fx:id="grid" alignment="CENTER_LEFT" prefHeight="484.0" prefWidth="1680.0">
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                    </GridPane>
-                                 </content>
-                              </ScrollPane>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <ScrollPane fitToWidth="true" prefHeight="1090.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
+                                       <content>
+                                          <GridPane fx:id="grid" alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="0.0">
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
                      </children>

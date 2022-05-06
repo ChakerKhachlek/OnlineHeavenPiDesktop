@@ -7,7 +7,9 @@ package services;
 
 import database.DatabaseConnexion;
 import interfaces.IServiceSeason;
+import models.Episode;
 import models.Season;
+import models.Serie;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -40,6 +42,28 @@ public class SeasonService implements IServiceSeason{
         }
            
         
+    }
+
+    public List<Episode> getSeasonEpisodes(int seasonsID) {
+        ArrayList<Episode> episodes = new ArrayList<>();
+
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM episode where season_id = '"+seasonsID+"' ";
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+
+                episodes.add(new Episode(rs.getInt(1),rs.getInt(2), rs.getString("name"), rs.getInt(4), rs.getString("video_url")));
+
+            }
+            System.out.println(episodes);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return episodes;
     }
 
  public List<Season> readSeasons(){

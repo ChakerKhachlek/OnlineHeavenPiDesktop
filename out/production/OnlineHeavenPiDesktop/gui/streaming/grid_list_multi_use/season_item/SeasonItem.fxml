@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" onMouseClicked="#click" prefHeight="240.0" prefWidth="200.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.streaming.grid_list_multi_use.categorie_item.SeasonItemController">
+<VBox alignment="TOP_CENTER" onMouseClicked="#click" prefHeight="240.0" prefWidth="200.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.streaming.grid_list_multi_use.season_item.SeasonItemController">
    <children>
       <ImageView fx:id="img" fitHeight="160.0" fitWidth="200.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>

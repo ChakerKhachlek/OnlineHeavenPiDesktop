@@ -39,6 +39,8 @@ public class ItemController {
             ratingLabel.setText(serie.getRating()+"");
         }else if(type.equals("lastReleased")){
             ratingLabel.setText(serie.getRelease_date().substring(0,10)+"");
+        }else if(type.equals("normal")){
+            ratingLabel.setText(serie.getRating()+"");
         }
 
 

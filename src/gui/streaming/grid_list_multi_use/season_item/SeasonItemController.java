@@ -1,15 +1,12 @@
-package gui.streaming.grid_list_multi_use.categorie_item;
+package gui.streaming.grid_list_multi_use.season_item;
 
-import gui.streaming.home.MyListener;
 import javafx.fxml.FXML;
 import javafx.scene.CacheHint;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import models.Category;
 import models.Season;
-import models.Serie;
 
 public class SeasonItemController {
     @FXML

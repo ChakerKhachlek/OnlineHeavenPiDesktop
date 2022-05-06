@@ -106,9 +106,6 @@ public class AnimeDetailsController implements Initializable {
             SeasonsListController seasonsListController =new SeasonsListController();
             seasonsListController.setSerie(serie);
 
-
-
-
             loader.setController(seasonsListController);
             Parent root = loader.load();
 
