@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #141414;" stylesheets="@../../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.streaming.StreamingMenuController">
+   <children>
+      <AnchorPane layoutX="200.0" prefHeight="29.0" prefWidth="700.0" style="-fx-background-color: #000;" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="10.0" layoutY="14.0" prefHeight="83.0" prefWidth="175.0" AnchorPane.topAnchor="14.0">
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="184.0" layoutX="7.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="17.0">
+                     <image>
+                        <Image url="@../dashboard/images/LogoMakr_4neFgL.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <MenuButton fx:id="CategoriesMenuButton" layoutX="34.0" layoutY="187.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="142.0" style="-fx-background-color: #212121;" text="Category" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="187.0">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+               <font>
+                  <Font name="Bauhaus 93" size="12.0" />
+               </font>
+            </MenuButton>
+            <HBox alignment="CENTER" layoutX="30.0" layoutY="109.0" prefHeight="63.0" prefWidth="152.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="19.0">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/ic_home.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <JFXButton fx:id="HomeButton" ellipsisString="" prefHeight="43.0" prefWidth="85.0" style="-fx-background-color: #000;" text="HOME" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                     <padding>
+                        <Insets right="8.0" />
+                     </padding>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="207.0" layoutY="29.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="700.0" style="-fx-background-color: #141414;" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
+         <children>
+            <ImageView fitHeight="43.0" fitWidth="33.0" layoutX="641.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="5.0">
+               <image>
+                  <Image url="@../dashboard/images/logosmall2.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER" layoutX="446.0" layoutY="12.0" prefHeight="29.0" prefWidth="169.0" styleClass="search-container" stylesheets="@../../css/styles.css" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="12.0">
+               <children>
+                  <ImageView fx:id="search" fitHeight="23.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/ic_search.png" />
+                     </image>
+                  </ImageView>
+                  <TextField id="search" fx:id="searchTextField" prefHeight="25.0" prefWidth="131.0" promptText="Search" styleClass="search" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <BorderPane fx:id="content" layoutX="200.0" layoutY="80.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+   </children>
+</AnchorPane>

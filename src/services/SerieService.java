@@ -19,6 +19,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 import models.Category;
+import models.Season;
 import models.Serie;
 /**
  *
@@ -85,6 +86,29 @@ public class SerieService implements IServiceSerie{
         return categories;
     }
 
+    public List<Season> getSerieSeasons(int serieID) {
+        ArrayList<Season> seasons = new ArrayList<>();
+
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM season where serie_id = '"+serieID+"' ";
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+
+                seasons.add(new Season(rs.getInt(1),rs.getInt(2), rs.getString("name"),rs.getString("description"),rs.getString("image_url"),rs.getString("trailer_url")));
+
+            }
+
+            System.out.println(seasons);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return seasons;
+    }
+
     @Override
     public void cleanAllSerieCategories(int id) {
         String req = "DELETE FROM serie_category WHERE serie_id ='"+id+"'";
@@ -125,7 +149,74 @@ public class SerieService implements IServiceSerie{
         
         return series;
     }
-    
+
+
+    public List<Serie> getTopRatedSeries() {
+        ArrayList<Serie> series = new ArrayList<>();
+
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM serie order by rating DESC limit 6";
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+
+                series.add(new Serie(rs.getInt(1), rs.getString("name"), rs.getString("description"), rs.getString("image_local_url"), rs.getString("trailer"), rs.getString("release_date"),rs.getFloat("rating"),rs.getInt("views_count"),rs.getString("created_at"),rs.getString("studio_name")));
+
+            }
+            System.out.println(series);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return series;
+    }
+
+    public List<Serie> getMostWatchedSeries() {
+        ArrayList<Serie> series = new ArrayList<>();
+
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM serie order by views_count DESC limit 6";
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+
+                series.add(new Serie(rs.getInt(1), rs.getString("name"), rs.getString("description"), rs.getString("image_local_url"), rs.getString("trailer"), rs.getString("release_date"),rs.getFloat("rating"),rs.getInt("views_count"),rs.getString("created_at"),rs.getString("studio_name")));
+
+            }
+            System.out.println(series);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return series;
+    }
+
+    public List<Serie> getLastReleased() {
+        ArrayList<Serie> series = new ArrayList<>();
+
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM serie order by release_date DESC limit 6";
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+
+                series.add(new Serie(rs.getInt(1), rs.getString("name"), rs.getString("description"), rs.getString("image_local_url"), rs.getString("trailer"), rs.getString("release_date"),rs.getFloat("rating"),rs.getInt("views_count"),rs.getString("created_at"),rs.getString("studio_name")));
+
+            }
+            System.out.println(series);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return series;
+    }
+
     @Override
    public Serie getSerieById(int id){
        Serie serie=new Serie();
@@ -150,7 +241,7 @@ public class SerieService implements IServiceSerie{
         String req = "INSERT INTO `serie_category` (`serie_id`,`category_id`) VALUES('"+serieId+"','"+CategoryId+"')";
          Statement ste;
       try {
-          
+
               ste = cnx.createStatement();
               System.out.println(req);
              ste.executeUpdate(req);

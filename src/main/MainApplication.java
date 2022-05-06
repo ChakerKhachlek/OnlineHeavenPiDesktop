@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -38,6 +39,13 @@ public class MainApplication extends Application {
             primaryStage.setX(event.getScreenX() - x);
             primaryStage.setY(event.getScreenY() - y);
         });
+        try{
+            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../gui/dashboard/images/logosmall2.png")));
+            primaryStage.setTitle("Online Heaven Dashboard");
+
+        }catch(Exception ex){
+            System.out.println("ex");
+        }
 
         primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();

@@ -1,31 +1,23 @@
 package gui.streaming;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import gui.streaming.anime_details.AnimeDetailsController;
+import gui.streaming.home.ItemController;
+import gui.streaming.home.MyListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.Category;
 import models.Serie;
-import org.controlsfx.control.spreadsheet.Grid;
 import services.CategoryService;
 import services.SerieService;
 
@@ -38,10 +30,8 @@ import java.util.ResourceBundle;
 public class StreamingMenuController implements Initializable {
 
     @FXML
-    private ImageView minimize,maximize,exit,search;
+    private ImageView search;
 
-    @FXML
-    private Grid topRatedGrid,lastAddedGrid;
 
     @FXML
     private MenuButton CategoriesMenuButton;
@@ -49,57 +39,25 @@ public class StreamingMenuController implements Initializable {
     @FXML
     private TextField searchTextField;
 
-
-
-    private List<Serie> series = new ArrayList<>();
     @FXML
-    private VBox chosenFruitCard;
-
+    private BorderPane content;
 
     @FXML
-    private ScrollPane scroll;
-    private Image image;
-    private MyListener myListener;
-
-    @FXML
-    private GridPane grid;
-
-
-
-    private boolean maximized=false;
-    Stage stage;
+    private Button HomeButton;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Serie serie =new Serie();
-
-        //window buttons starts
-        exit.setOnMouseClicked(event -> {
-            stage = (Stage) exit.getScene().getWindow();
-            System.exit(0);
+        loadPage("./home/homePage.fxml");
+        //homeButton click starts
+        HomeButton.setOnAction(event -> {
+           loadPage("./home/homePage.fxml");
         });
+        //homeButton click ends
 
-        maximize.setOnMouseClicked(event -> {
-            stage = (Stage) maximize.getScene().getWindow();
-            if (!maximized) {
-                stage.setMaximized(true);
-                maximized = true;
-            } else {
-                stage.setMaximized(false);
-                maximized = false;
-            }
-        });
 
-        minimize.setOnMouseClicked(event -> {
-            stage = (Stage) minimize.getScene().getWindow();
-            stage.setIconified(true);
-        });
-        //window buttons ends
 
         //search start
-        searchTextField.setStyle("-fx-text-fill: white;-fx-background-color: #1A237E");
-
         searchTextField.addEventHandler(KeyEvent.KEY_PRESSED, eventEnter -> {
             if (eventEnter.getCode() == KeyCode.ENTER) {
                 if (searchTextField.getText().equals("")) {
@@ -128,6 +86,7 @@ public class StreamingMenuController implements Initializable {
         EventHandler<ActionEvent> eventMenuItem = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, ((MenuItem) e.getSource()).getId() + " Clicked !");
+                CategoriesMenuButton.setText( ((MenuItem) e.getSource()).getText());
                 alert.show();
             }
         };
@@ -138,64 +97,23 @@ public class StreamingMenuController implements Initializable {
             menuItem.setId(String.valueOf(categoriesArrayList.get(i).getId()));
             menuItem.setOnAction(eventMenuItem);
             CategoriesMenuButton.getItems().add(menuItem);
-
         }
         //categories menu button ends
 
-        //series grid pane start
-        SerieService serieService = new SerieService();
-        series=serieService.readSeries();
-        if (series.size() > 0) {
-
-            myListener = new MyListener() {
-                @Override
-                public void onClickListener(Serie serie) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Serie Clicked ! " + serie.getName());
-                    alert.show();
-                }
-            };
-        }
-        int column = 0;
-        int row = 1;
-        try {
-            for (int i = 0; i < series.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("./item.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
-
-                ItemController itemController = fxmlLoader.getController();
-                itemController.setData(series.get(i),myListener);
-
-                if (column == 3) {
-                    column = 0;
-                    row++;
-                }
-
-
-                grid.add(anchorPane, column++, row); //(child,column,row)
-                //set grid width
-                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
-                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                grid.setMaxWidth(Region.USE_PREF_SIZE);
-
-                //set grid height
-                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
-                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                grid.setMaxHeight(Region.USE_PREF_SIZE);
-
-                GridPane.setHalignment(anchorPane, HPos.CENTER);
-                GridPane.setValignment(anchorPane, VPos.CENTER);
-                grid.setAlignment(Pos.CENTER);
-                GridPane.setMargin(anchorPane, new Insets(10));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //series grid pane ends
     }
 
+    public void loadPage(String page){
 
+        Parent root = null;
+        try{
+            root = FXMLLoader.load(getClass().getResource(page));
+        }catch(IOException ex)
+        {
+            System.out.println("error de transition "+ex);
+        }
+        content.setCenter(root);
 
+    }
 
 
 

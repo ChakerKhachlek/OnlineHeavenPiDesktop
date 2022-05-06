@@ -2,7 +2,6 @@ package gui.dashboard;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,18 +9,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class DashboardMenuController implements Initializable {
 
@@ -115,31 +112,18 @@ public class DashboardMenuController implements Initializable {
         LoadPage("./DashboardHomePage.fxml");
         streamingPortal.setOnMouseClicked(event->{
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("../streaming/StreamingMenuLayout.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("../streaming/StreamingMenu.fxml"));
                 Stage stage = new Stage();
-                stage.initStyle(StageStyle.UNDECORATED);
+                try{
+                    stage.getIcons().add(new Image(getClass().getResourceAsStream("./images/logosmall2.png")));
+                    stage.setTitle("Online Heaven Streaming");
 
-                root.setOnMousePressed(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        xOffset = event.getSceneX();
-                        yOffset = event.getSceneY();
-                    }
-                });
-                root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        stage.setX(event.getScreenX() - xOffset);
-                        stage.setY(event.getScreenY() - yOffset);
-                    }
-                });
-
-
-
+                }catch(Exception ex){
+                    System.out.println("ex");
+                }
                 stage.setScene(new Scene(root));
                 stage.show();
-                //if i want to hide current window
-                //((Node)(event.getSource())).getScene().getWindow().hide();
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -158,6 +142,8 @@ public class DashboardMenuController implements Initializable {
         Parent root = null;
         try{
             root = FXMLLoader.load(getClass().getResource(page));
+
+
         }catch(IOException ex)
         {
             System.out.println("error de transition "+ex);

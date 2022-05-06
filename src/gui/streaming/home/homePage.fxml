@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.streaming.home.homePageController">
+   <children>
+      <BorderPane fx:id="content" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane>
+               <children>
+                  <VBox prefHeight="570.0" prefWidth="1680.0" style="-fx-background-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ScrollPane hbarPolicy="ALWAYS" style="-fx-background-color: #000;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+                           <content>
+                              <VBox prefHeight="570.0" prefWidth="1680.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="680.0">
+                                       <VBox.margin>
+                                          <Insets left="20.0" top="20.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <ImageView fitHeight="28.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../icons/eye-3-512.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label text="Most viewed" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="18.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <ScrollPane fitToWidth="true" minViewportHeight="250.0" prefHeight="260.0" prefWidth="1059.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </VBox.margin>
+                                       <content>
+                                          <HBox fx:id="mostViewedContainer" prefHeight="0.0" prefWidth="0.0" spacing="30.0" />
+                                       </content>
+                                    </ScrollPane>
+                                    <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="680.0">
+                                       <children>
+                                          <ImageView fitHeight="28.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../icons/star-8-512.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label text="Top rated" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="18.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets bottom="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <ScrollPane fitToWidth="true" layoutX="30.0" layoutY="71.0" minViewportHeight="250.0" prefHeight="260.0" prefWidth="1059.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+                                       <VBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </VBox.margin>
+                                       <content>
+                                          <HBox fx:id="topRatedContainer" prefHeight="0.0" prefWidth="0.0" spacing="30.0" />
+                                       </content>
+                                    </ScrollPane>
+                                    <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="363.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="680.0">
+                                       <children>
+                                          <ImageView fitHeight="28.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../icons/new-badge-2-512.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label text="Last released" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="18.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <ScrollPane fitToWidth="true" layoutX="30.0" layoutY="411.0" minViewportHeight="250.0" prefHeight="260.0" prefWidth="1059.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+                                       <content>
+                                          <HBox fx:id="lastReleasedContainer" prefHeight="0.0" prefWidth="0.0" spacing="30.0" />
+                                       </content>
+                                       <VBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </VBox.margin>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
