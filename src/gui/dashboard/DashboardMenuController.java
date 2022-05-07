@@ -112,11 +112,15 @@ public class DashboardMenuController implements Initializable {
         LoadPage("./DashboardHomePage.fxml");
         streamingPortal.setOnMouseClicked(event->{
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("../streaming/StreamingMenu.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/gui/streaming/StreamingMenu.fxml"));
                 Stage stage = new Stage();
                 try{
-                    stage.getIcons().add(new Image(getClass().getResourceAsStream("./images/logosmall2.png")));
+                    stage.getIcons().add(new Image(getClass().getResourceAsStream("/gui/dashboard/images/logosmall2.png")));
                     stage.setTitle("Online Heaven Streaming");
+                    stage.setOnCloseRequest(eventClose->{
+                        Stage currentStage=(Stage) dashboardMenuButton.getScene().getWindow();
+                        currentStage.close();
+                    });
 
                 }catch(Exception ex){
                     System.out.println("ex");

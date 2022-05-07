@@ -4,6 +4,10 @@
  */
 package models;
 
+import com.mysql.cj.xdevapi.JsonArray;
+
+import java.sql.Array;
+
 /**
  *
  * @author Lord Solari
@@ -20,6 +24,27 @@ public class User {
     private String bio;
     private String country;
     private boolean is_admin;
+
+    private boolean is_verified;
+
+    private String db_token;
+
+    private String username;
+
+    private String userRoles;
+
+    private String password;
+
+
+
+    public void setUserRoles(String userRoles) {
+
+        this.userRoles = userRoles;
+    }
+    public String getUserRoles() {
+        return userRoles;
+    }
+
 
     public User(int id, String first_name, String last_name, String email, String gender, String profile_image, String cover_image, int age, String bio, String country, boolean is_admin) {
         this.id = id;
@@ -145,6 +170,7 @@ public class User {
         this.country = country;
     }
 
+
     public boolean isIs_admin() {
         return is_admin;
     }
@@ -153,9 +179,57 @@ public class User {
         this.is_admin = is_admin;
     }
 
+    public boolean isIs_verified() {
+        return is_verified;
+    }
+
+    public void setIs_verified(boolean is_verified) {
+        this.is_verified = is_verified;
+    }
+
+    public String getDb_token() {
+        return db_token;
+    }
+
+    public void setDb_token(String db_token) {
+        this.db_token = db_token;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + ", gender=" + gender + ", profile_image=" + profile_image + ", cover_image=" + cover_image + ", age=" + age + ", bio=" + bio + ", country=" + country + ", is_admin=" + is_admin + '}';
+        return "User{" +
+                "id=" + id +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", profile_image='" + profile_image + '\'' +
+                ", cover_image='" + cover_image + '\'' +
+                ", age=" + age +
+                ", bio='" + bio + '\'' +
+                ", country='" + country + '\'' +
+                ", is_admin=" + is_admin +
+                ", is_verified=" + is_verified +
+                ", db_token='" + db_token + '\'' +
+                ", username='" + username + '\'' +
+                ", userRoles=" + userRoles +
+                ", password='" + password + '\'' +
+                '}';
     }
-    
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

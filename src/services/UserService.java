@@ -15,6 +15,8 @@ import java.util.List;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import models.Serie;
 import models.User;
 
 /**
@@ -220,6 +222,177 @@ public class UserService implements IServiceUser{
             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return m;
+    }
+
+    public User getUserByToken(String token){
+        User user =new User();
+        user.setEmail("not set");
+        String req = "SELECT * from user where db_token ='"+token+"' limit 1";
+        try {
+            Statement st = cnx.createStatement();
+            rs=st.executeQuery(req);
+            if(rs.next()){
+                user.setId(rs.getInt("id"));
+                user.setUsername(rs.getString("username"));
+                user.setEmail(rs.getString("email"));
+                user.setFirst_name(rs.getString("first_name"));
+                user.setLast_name(rs.getString("last_name"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setGender(rs.getString("gender"));
+                user.setProfile_image("http://localhost:8000/uploads/users-images/"+rs.getString("profile_image"));
+                user.setCover_image(rs.getString("cover_image"));
+                user.setIs_verified(rs.getBoolean("is_verified"));
+                user.setUserRoles(rs.getString("roles"));
+                user.setDb_token(rs.getString("db_token"));
+            }
+
+
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return user;
+    }
+
+
+    public boolean getIsUserFavoriteSerie(int userId,int serieId){
+        boolean res=false;
+        String req = "SELECT * from interest where user_id ='"+userId+"' and serie_id = '"+serieId+"' and is_favor = 1";
+        ResultSet rs;
+        try {
+            Statement st = cnx.createStatement();
+            rs=st.executeQuery(req);
+            if(rs.next()){
+                res=true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return res;
+    }
+
+    public int getIsUserRatedSerie(int userId,int serieId){
+        int res=-1;
+        String req = "SELECT * from interest where user_id ='"+userId+"' and serie_id = '"+serieId+"'"+" and rating IS NOT NULL";
+        ResultSet rs;
+        try {
+            Statement st = cnx.createStatement();
+            rs=st.executeQuery(req);
+            if(rs.next()){
+                res=rs.getInt("rating");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return res;
+    }
+
+    public void setUserFavorite(int userId,int serieId){
+        UserService userService=new UserService();
+        String req="";
+        if(userService.getIsUserRatedSerie(userId,serieId) !=-1){
+           req = "UPDATE interest set is_favor = 1 where user_id = '"+userId+"' and serie_id = '"+serieId+"'";
+        }else{
+           req = "INSERT INTO interest (user_id,serie_id,is_favor) values('"+userId+"','"+serieId+"',1)";
+        }
+
+        try {
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void setUserUnfavorite(int userId,int serieId){
+
+        UserService userService=new UserService();
+        String req="";
+        if(userService.getIsUserRatedSerie(userId,serieId) !=-1){
+            req = "UPDATE interest set is_favor = 0 where user_id = '"+userId+"' and serie_id = '"+serieId+"'";
+        }else{
+            req = "INSERT INTO interest (user_id,serie_id,is_favor) values('"+userId+"','"+serieId+"',1)";
+        }
+        try {
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void setUserRate(int userId, Serie serie, float rate){
+        UserService userService=new UserService();
+        String req="";
+        if(userService.getIsUserFavoriteSerie(userId,serie.getId())){
+            req = "UPDATE interest set rating = '"+rate+"' where user_id = '"+userId+"' and serie_id = '"+serie.getId()+"'";
+        }else{
+            req = "INSERT INTO interest (user_id,serie_id,rating) values('"+userId+"','"+serie.getId()+"','"+rate+"')";
+        }
+        try {
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+
+            String req2="Update serie set rating = '"+(serie.getRating()+rate)/2+"' where id = '"+serie.getId()+"'";
+            st.executeUpdate(req2);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    public User getUserByEmail(String email){
+        User user =new User();
+        user.setEmail("not set");
+        String req = "SELECT * from user where email ='"+email+"' limit 1";
+        try {
+            Statement st = cnx.createStatement();
+            rs=st.executeQuery(req);
+            if(rs.next()){
+                user.setId(rs.getInt("id"));
+                user.setUsername(rs.getString("username"));
+                user.setEmail(rs.getString("email"));
+                user.setFirst_name(rs.getString("first_name"));
+                user.setLast_name(rs.getString("last_name"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setGender(rs.getString("gender"));
+                user.setProfile_image("http://localhost:8000/uploads/users-images/"+rs.getString("profile_image"));
+                user.setCover_image(rs.getString("cover_image"));
+                user.setIs_verified(rs.getBoolean("is_verified"));
+                user.setUserRoles(rs.getString("roles"));
+                user.setDb_token(rs.getString("db_token"));
+            }
+
+
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return user;
+    }
+
+    public void updateUserToken(String email,String token){
+
+        String req = "update user set db_token ='"+token+"' where email ='"+email+"'";
+        try {
+            Statement st = cnx.createStatement();
+            int rs=st.executeUpdate(req);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     
 }

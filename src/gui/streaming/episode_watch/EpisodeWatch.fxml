@@ -23,17 +23,33 @@
                                     <children>
                                         <VBox alignment="TOP_CENTER" prefHeight="420.0" prefWidth="637.0">
                                             <children>
-                                                <Label fx:id="episodeTitle" text="serieLabel" textAlignment="CENTER" textFill="RED">
-                                                    <font>
-                                                        <Font name="Arial" size="24.0" />
-                                                    </font>
-                                       <padding>
-                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                       </padding>
+                                    <HBox>
                                        <VBox.margin>
-                                          <Insets bottom="30.0" />
+                                          <Insets bottom="30.0" left="30.0" right="30.0" />
                                        </VBox.margin>
-                                                </Label>
+                                       <children>
+                                          <JFXButton fx:id="backToEpisodesButton" prefHeight="33.0" prefWidth="65.0" style="-fx-background-color: transparent;" text="&lt; Back" textFill="#f600ff">
+                                             <font>
+                                                <Font name="Bauhaus 93" size="12.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                                      <Label fx:id="episodeTitle" text="serieLabel" textAlignment="CENTER" textFill="RED">
+                                                          <font>
+                                                              <Font name="Arial" size="24.0" />
+                                                          </font>
+                                             <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                             </padding>
+                                                      </Label>
+                                       </children>
+                                    </HBox>
                                             <HBox alignment="CENTER" prefHeight="58.0" stylesheets="@../../../css/styles.css">
                                                 <children>
                                                     <HBox alignment="TOP_CENTER" prefHeight="58.0" prefWidth="198.0" style="-fx-background-color: #1E88E5; -fx-background-radius: 50px;">

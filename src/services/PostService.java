@@ -24,7 +24,7 @@ public class PostService implements IServicePost{
      @Override
     public void addPost(Post p) {
         try {
-            String req="INSERT INTO `post`(`description`, `image_url`, `created_at`) VALUES ('"+ p.getDescription() +"','"+ p.getImage_url() +"','"+ p.getCreated_at()+"')";
+            String req="INSERT INTO `post`(`description`, `image_url`, `created_at`, `user_id`) VALUES ('"+ p.getDescription() +"','"+ p.getImage_url() +"','"+ p.getCreated_at()+"','"+p.getUser_id()+"')";
             
             Statement st= cnx.createStatement();
             st.executeUpdate(req);

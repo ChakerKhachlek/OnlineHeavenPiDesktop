@@ -18,9 +18,14 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import models.Category;
 import models.Season;
 import models.Serie;
+import models.User;
+
 /**
  *
  * @author Lord Solari
@@ -40,8 +45,6 @@ public class SerieService implements IServiceSerie{
                 + " VALUES ('" + s.getName() + "','" + s.getDescription() + "','" + s.getImage_local_url() + "','" + s.getTrailer() + "','" + s.getRelease_date() + "'," + s.getRating() + "," + s.getViews_count() + ",'" + String.valueOf(LocalDate.now()) + "','" + s.getStudio_name() + "')";
         Statement ste;
         try {
-
-
             ste = cnx.createStatement();
             System.out.println(SQL_INSERT);
             ste.executeUpdate(SQL_INSERT,Statement.RETURN_GENERATED_KEYS);
@@ -86,6 +89,29 @@ public class SerieService implements IServiceSerie{
         return categories;
     }
 
+    public List<Serie> userFavoriteSeries(int userID) {
+        ArrayList<Serie> series = new ArrayList<>();
+
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT serie.* FROM serie,interest where interest.user_id = '"+userID+"' and serie.id=interest.serie_id";
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+
+                series.add(new Serie(rs.getInt(1), rs.getString("name"), rs.getString("description"), rs.getString("image_local_url"), rs.getString("trailer"), rs.getString("release_date"),rs.getFloat("rating"),rs.getInt("views_count"),rs.getString("created_at"),rs.getString("studio_name")));
+
+            }
+
+            System.out.println(series);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return series;
+    }
+
     public List<Season> getSerieSeasons(int serieID) {
         ArrayList<Season> seasons = new ArrayList<>();
 
@@ -108,6 +134,9 @@ public class SerieService implements IServiceSerie{
 
         return seasons;
     }
+
+
+
 
     @Override
     public void cleanAllSerieCategories(int id) {

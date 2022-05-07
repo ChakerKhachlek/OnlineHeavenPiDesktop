@@ -1,5 +1,7 @@
 package gui.streaming.grid_list_multi_use;
 
+import com.jfoenix.controls.JFXButton;
+import gui.streaming.anime_details.AnimeDetailsController;
 import gui.streaming.grid_list_multi_use.season_item.MyListenerSeason;
 import gui.streaming.grid_list_multi_use.season_item.SeasonItemController;
 import javafx.fxml.FXML;
@@ -26,6 +28,9 @@ public class SeasonsListController implements Initializable {
     @FXML
     private Label textLabel;
     private Serie serie;
+
+    @FXML
+    private JFXButton backButton;
 
     @FXML
     private GridPane grid;
@@ -79,7 +84,7 @@ public class SeasonsListController implements Initializable {
                 SeasonItemController itemController = fxmlLoader.getController();
                 itemController.setData(serieSeasons.get(i),myListenerSeason);
 
-                if (column == 3) {
+                if (column == 5) {
                     column = 0;
                     row++;
                 }
@@ -93,6 +98,19 @@ public class SeasonsListController implements Initializable {
             e.printStackTrace();
         }
 
+        backButton.setOnAction(event->{
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/streaming/anime_details/animeDetails.fxml"));
+                AnimeDetailsController animeDetailsController=new AnimeDetailsController();
+                animeDetailsController.setSerie(serie);
+                loader.setController(animeDetailsController);
+                Parent root = loader.load();
+                content.setCenter(root);
+            }catch(IOException ex)
+            {
+                System.out.println("error de transition "+ex);
+            }
+        });
 
     }
 

@@ -1,5 +1,6 @@
 package gui.streaming.grid_list_multi_use;
 
+import com.jfoenix.controls.JFXButton;
 import gui.streaming.episode_watch.EpisodeWatchController;
 import gui.streaming.grid_list_multi_use.episode_item.EpisodeItemController;
 import gui.streaming.grid_list_multi_use.episode_item.MyListenerEpisode;
@@ -35,6 +36,9 @@ public class EpisodesListController implements Initializable {
     private Season season;
 
     @FXML
+    private JFXButton backButton;
+
+    @FXML
     private GridPane grid;
     @FXML
     private BorderPane content;
@@ -61,6 +65,7 @@ public class EpisodesListController implements Initializable {
                         episodeWatchController.setSeason(season);
                         episodeWatchController.setEpisode(episode);
 
+
                         loader.setController(episodeWatchController);
                         Parent root = loader.load();
 
@@ -85,7 +90,7 @@ public class EpisodesListController implements Initializable {
                 EpisodeItemController itemController = fxmlLoader.getController();
                 itemController.setData(seasonEpisodes.get(i),myListenerEpisode,serie);
 
-                if (column == 3) {
+                if (column == 5) {
                     column = 0;
                     row++;
                 }
@@ -99,6 +104,21 @@ public class EpisodesListController implements Initializable {
             e.printStackTrace();
         }
 
+        backButton.setOnAction(event->{
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../grid_list_multi_use/GridList.fxml"));
+                SeasonsListController seasonsListController =new SeasonsListController();
+                seasonsListController.setSerie(serie);
+
+                loader.setController(seasonsListController);
+                Parent root = loader.load();
+
+                content.setCenter(root);
+            }catch(IOException ex)
+            {
+                System.out.println("error de transition "+ex);
+            }
+        });
 
     }
 

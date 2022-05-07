@@ -32,11 +32,23 @@
                               </ImageView>
                               <VBox prefHeight="327.0" prefWidth="442.0">
                                  <children>
-                                    <Label fx:id="serieNameLabel" text="serieLabel" textFill="RED">
-                                       <font>
-                                          <Font name="Arial" size="24.0" />
-                                       </font>
-                                    </Label>
+                                    <HBox>
+                                       <children>
+                                          <Label fx:id="serieNameLabel" text="serieLabel" textFill="RED">
+                                             <font>
+                                                <Font name="Arial" size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fx:id="favorizedImageView" fitHeight="28.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                             <image>
+                                                <Image url="@../../../icons/heart-69-512%20.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
                                     <Text fx:id="serieDescriptionLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="wajhedkjhsq qdjsh kjqhskfhsdq hdsjkfh hsdkjfhslkj fhd sdfjkfh sjdfh dfsdkjh dlk fhsd sdkjfhfkdjs hkfsd hkdf hsd kfhsdfklhsdkjlfhskdfh shkjsdfh  kjdsfhkhs kfhsdkfh ksdhl" wrappingWidth="435.13671875">
                                        <font>
                                           <Font name="Arial" size="16.0" />
@@ -81,6 +93,14 @@
                                                 <Insets left="10.0" />
                                              </HBox.margin>
                                           </ImageView>
+                                          <JFXButton fx:id="rateButton" style="-fx-background-color: #FFEB3B; -fx-text-fill: white;" text="Rate">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="12.0" />
+                                             </font>
+                                          </JFXButton>
                                        </children>
                                     </HBox>
                                     <HBox>
@@ -151,7 +171,7 @@
                            <children>
                               <HBox prefHeight="58.0" prefWidth="198.0" style="-fx-background-color: #FF1744; -fx-background-radius: 50px;" stylesheets="@../../../css/styles.css">
                                  <children>
-                                    <ImageView fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="favoriteImageView" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../../icons/heart-69-512%20.png" />
                                        </image>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -13,47 +14,67 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane fx:id="content" layoutX="10.0" layoutY="-8.0" prefHeight="700.0" prefWidth="1680.0">
+      <BorderPane fx:id="content" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <AnchorPane>
                <children>
-                  <VBox prefHeight="570.0" prefWidth="680.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox prefHeight="700.0" prefWidth="1680.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="600.0">
-                           <children>
-                              <Label fx:id="textLabel" text="Most viewed" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial" size="18.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox fillHeight="false" prefHeight="570.0" prefWidth="1680.0">
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                           <children>
-                              <VBox HBox.hgrow="ALWAYS">
+                        <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: transparent;">
+                           <content>
+                              <VBox prefHeight="700.0" prefWidth="1680.0">
                                  <children>
-                                    <ScrollPane fitToWidth="true" prefHeight="1090.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
-                                       <content>
-                                          <GridPane fx:id="grid" alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="0.0">
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                          </GridPane>
-                                       </content>
-                                    </ScrollPane>
+                                    <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="600.0">
+                                       <children>
+                                          <JFXButton fx:id="backButton" prefHeight="33.0" prefWidth="65.0" style="-fx-background-color: transparent;" text="&lt; Back" textFill="#f600ff">
+                                             <font>
+                                                <Font name="Bauhaus 93" size="12.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="600.0">
+                                       <children>
+                                          <Label fx:id="textLabel" text="Most viewed" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="18.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox fillHeight="false" prefHeight="570.0" prefWidth="1680.0">
+                                       <VBox.margin>
+                                          <Insets top="30.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <ScrollPane fitToWidth="true" prefHeight="1090.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
+                                                   <content>
+                                                      <GridPane fx:id="grid" alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="0.0">
+                                                        <rowConstraints>
+                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                      </GridPane>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
-                           </children>
-                        </HBox>
+                           </content>
+                        </ScrollPane>
                      </children>
                   </VBox>
                </children>

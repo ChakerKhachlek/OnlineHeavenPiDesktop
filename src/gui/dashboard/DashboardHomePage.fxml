@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="454.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.dashboard.DashboardHomePage">
+<AnchorPane prefHeight="454.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.dashboard.DashboardHomePageController">
    <children>
       <Text layoutX="41.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Online Heaven Dashbaord" wrappingWidth="674.13671875">
          <font>

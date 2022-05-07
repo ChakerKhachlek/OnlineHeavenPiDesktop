@@ -1,5 +1,6 @@
 package gui.streaming.grid_list_multi_use;
 
+import com.jfoenix.controls.JFXButton;
 import gui.streaming.anime_details.AnimeDetailsController;
 import gui.streaming.grid_list_multi_use.season_item.MyListenerSeason;
 import gui.streaming.grid_list_multi_use.season_item.SeasonItemController;
@@ -31,6 +32,8 @@ public class SerieListController implements Initializable {
     @FXML
     private GridPane grid;
 
+    @FXML
+    private JFXButton backButton;
     @FXML
     private BorderPane content;
     private List<Serie> serieList=new ArrayList<Serie>();
@@ -77,7 +80,7 @@ public class SerieListController implements Initializable {
                 ItemController itemController = fxmlLoader.getController();
                 itemController.setData(serieList.get(i),myListenerSerie,"normal");
 
-                if (column == 3) {
+                if (column == 5) {
                     column = 0;
                     row++;
                 }
@@ -91,7 +94,16 @@ public class SerieListController implements Initializable {
             e.printStackTrace();
         }
 
-
+        backButton.setOnAction(event->{
+            Parent root = null;
+            try{
+                root = FXMLLoader.load(getClass().getResource("/gui/streaming/home/homePage.fxml"));
+            }catch(IOException ex)
+            {
+                System.out.println("error de transition "+ex);
+            }
+            content.setCenter(root);
+        });
     }
 
     public void setSerieList(List<Serie> serieList) {
