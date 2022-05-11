@@ -13,7 +13,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import models.Comment;
 import models.Post;
+import models.Serie;
+
 /**
  *
  * @author Lord Solari
@@ -35,7 +39,33 @@ public class PostService implements IServicePost{
         }
         
     }
+    public List<Comment> readPostComments(int post_id) {
+        ArrayList<Comment> comments = new ArrayList<>();
 
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM comment where post_id = '"+post_id+"' order by created_at desc";
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                Comment comment=new Comment();
+                comment.setId(rs.getInt("id"));
+                comment.setPost_id(rs.getInt("post_id"));
+                comment.setUser_id(rs.getInt("user_id"));
+                comment.setContent(rs.getString("content"));
+                comment.setCreated_at(rs.getString("created_at"));
+                comments.add(comment);
+
+
+            }
+            System.out.println(comments);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return comments;
+    }
     @Override
     public List<Post> fetchAllPost() {
         List<Post> posts= new ArrayList<>();
@@ -52,6 +82,24 @@ public class PostService implements IServicePost{
             ex.printStackTrace();
         }
         
+        return posts;
+    }
+
+    public List<Post> fetchAllEpisodePosts(String postDescription,int user_id) {
+        List<Post> posts= new ArrayList<>();
+
+        String req="select * from post where description like '%"+postDescription+"%' and user_id='"+user_id+"' order by id limit 1";
+
+        try {
+            Statement st=cnx.createStatement();
+            ResultSet rs=st.executeQuery(req);
+            while (rs.next())
+                posts.add(new Post(rs.getInt("id"), rs.getInt("user_id"), rs.getString(3), rs.getString(4), rs.getString(5)));
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
         return posts;
     }
 

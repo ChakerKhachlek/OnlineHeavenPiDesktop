@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="argon2-jvm-2.10.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/lib/argon2-jvm-2.10.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/argon2-jvm-nolibs-2.10.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

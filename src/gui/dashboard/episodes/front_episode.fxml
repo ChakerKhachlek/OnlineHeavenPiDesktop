@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.dashboard.episodes.Front_episodeController">
+   <children>
+      <Pane layoutY="334.0" prefHeight="66.0" prefWidth="600.0" style="-fx-background-color: #3F2B63;">
+         <children>
+            <Button layoutX="501.0" layoutY="17.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #191970;" text="CANCEL" textFill="#eeeded" />
+         </children>
+      </Pane>
+      <Pane prefHeight="340.0" prefWidth="600.0" style="-fx-background-color: #191970;">
+         <children>
+            <ImageView fx:id="img_logo" fitHeight="52.0" fitWidth="151.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@online.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nom_anime" layoutX="194.0" layoutY="14.0" prefHeight="52.0" prefWidth="212.0" textFill="#f5f0f0" />
+            <ImageView fx:id="ep1" fitHeight="110.0" fitWidth="100.0" layoutX="42.0" layoutY="84.0" onMouseClicked="#vid1" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ep2" fitHeight="110.0" fitWidth="100.0" layoutX="165.0" layoutY="84.0" onMouseClicked="#vid2" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="ep1_txt" alignment="CENTER" layoutX="42.0" layoutY="184.0" prefHeight="28.0" prefWidth="96.0" textFill="#eeeded" />
+            <Label fx:id="ep2_txt" alignment="CENTER" layoutX="165.0" layoutY="184.0" prefHeight="28.0" prefWidth="96.0" textFill="#eeebeb" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -9,11 +9,11 @@ package models;
  * @author Lord Solari
  */
 public class Episode {
-    
+
     private int id;
     private int season_id;
     private String name;
-   
+
     private String video_url;
     private int episode_number;
 
@@ -28,7 +28,13 @@ public class Episode {
         this.episode_number = episode_number;
         this.video_url = video_url;
     }
+    public Episode(int season_id, String name, int episode_number, String video_url) {
 
+        this.season_id=season_id;
+        this.name = name;
+        this.episode_number = episode_number;
+        this.video_url = video_url;
+    }
     public Episode(String name, int episode_number, String video_url) {
         this.name = name;
         this.episode_number = episode_number;
@@ -43,8 +49,8 @@ public class Episode {
         this.episode_number = episode_number;
     }
 
-   
-    
+
+
     public int getid() {
         return id;
     }
@@ -52,10 +58,16 @@ public class Episode {
     public void setid(int id) {
         this.id = id;
     }
+    //////////////////////////////////////////////////////////////////////
+    public int getseason_id() {
+        return season_id;
+    }
 
-    
+    public void setseason_id(int season_id) {
+        this.season_id = season_id;
+    }
     ////////////////////////////////////////////////////////////////////////
-    
+
     public String getname() {
         return name;
     }
@@ -64,9 +76,9 @@ public class Episode {
         this.name = name;
     }
 
-    
+
     //////////////////////////////////////////////////////////////////////////////
-    
+
     public int getepisode_number() {
         return episode_number;
     }
@@ -75,9 +87,9 @@ public class Episode {
         this.episode_number = episode_number;
     }
 
-    
+
     /////////////////////////////////////////////////////////////////////
-    
+
     public String getvideo_url() {
         return video_url;
     }
@@ -86,7 +98,7 @@ public class Episode {
         this.video_url = video_url;
     }
 
-   
+
 
     @Override
     public String toString() {

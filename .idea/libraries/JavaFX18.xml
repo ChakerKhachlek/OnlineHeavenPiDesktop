@@ -20,6 +20,7 @@
       <root url="jar://$PROJECT_DIR$/lib/mail/pop3.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mail/SMSLib.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mail/smtp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/AnimateFX-1.2.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

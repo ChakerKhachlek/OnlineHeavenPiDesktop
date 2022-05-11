@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" fx:id="recher_interface" prefHeight="400.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.dashboard.episodes.Rechercher_episodeController">
+   <children>
+      <Pane layoutY="346.0" prefHeight="53.0" prefWidth="602.0" style="-fx-background-color: #3F2B63;">
+         <children>
+            <Button fx:id="bu" layoutX="484.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancel_search" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: #191970;" text="CANCEL" textFill="#fcf8f8" />
+         </children>
+      </Pane>
+      <ImageView fx:id="img_back" fitHeight="343.0" fitWidth="610.0" layoutX="-2.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../OneDrive/Documents/NetBeansProjects/workshop/src/gui/pageajouter.jpeg" />
+         </image>
+      </ImageView>
+      <Label fx:id="epp_name" layoutX="14.0" layoutY="104.0" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #191970;" text="Episode name :" textFill="#fcfafa" />
+      <TextField fx:id="episode_na" layoutX="113.0" layoutY="103.0" prefHeight="27.0" prefWidth="402.0" promptText="insert name" />
+      <Button fx:id="bu99" layoutX="256.0" layoutY="148.0" mnemonicParsing="false" onAction="#rechercher_epis" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: #191970;" text="SEARCH" textFill="#f8f8f8" />
+      <Pane layoutX="-2.0" prefHeight="72.0" prefWidth="603.0" style="-fx-background-color: #3F2B63;">
+         <children>
+            <ImageView fx:id="img_online" fitHeight="46.0" fitWidth="160.0" layoutX="22.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@online.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="241.0" layoutY="9.0" prefHeight="60.0" prefWidth="119.0" text="Search for an episode" textFill="#f2efef" />
+         </children>
+      </Pane>
+      <Pane layoutX="193.0" layoutY="189.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #191970;">
+         <children>
+            <Label fx:id="recher_label" layoutX="-1.0" prefHeight="201.0" prefWidth="202.0" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

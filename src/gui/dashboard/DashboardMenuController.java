@@ -141,6 +141,23 @@ public class DashboardMenuController implements Initializable {
         seriesMenuButton.setOnAction(event->{
             LoadPage("./series/Series.fxml");
         });
+
+        episodesMenuButton.setOnAction(event->{
+            Parent root = null;
+            Stage stage=new Stage();
+            try {
+                root = FXMLLoader.load(getClass().getResource("/gui/dashboard/episodes/afficher_episodes.fxml"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            Label labelEpisode=new Label("Episode Management in new window");
+            content.setCenter(labelEpisode);
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/gui/dashboard/images/logosmall2.png")));
+            stage.setTitle("Online Heaven Streaming");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        });
     }
     private void LoadPage(String page){
         Parent root = null;

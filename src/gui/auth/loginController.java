@@ -1,6 +1,7 @@
 package gui.auth;
 
 import com.jfoenix.controls.JFXButton;
+import de.mkammerer.argon2.Argon2Factory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -52,7 +53,7 @@ public class loginController implements Initializable {
             if(loginTextField.getText().equals("") || passwordTextField.getText().equals("")){
                 errorLabel.setText("All fields are required !");
                 errorLabel.setVisible(true);
-            }else if( passwordTextField.getText().equals("Solari123") && !user.getEmail().equals("not set")){
+            }else if(encodePassword(passwordTextField.getText(),user.getPassword())&& !user.getEmail().equals("not set")){
                 pref.putBoolean(keyIsLoggedIn,true);
                 String randomToken=Generator.generateRandomPassword(20);
                 userService.updateUserToken(user.getEmail(),randomToken);
@@ -118,7 +119,7 @@ public class loginController implements Initializable {
                 }
 
 
-            }else if(!passwordTextField.getText().equals("Solari123") || user.getEmail().equals("not set")){
+            }else if(!encodePassword(passwordTextField.getText(),user.getPassword()) || user.getEmail().equals("not set")){
                 errorLabel.setText("Verify your credentials !");
                 errorLabel.setVisible(true);
             }
@@ -136,5 +137,8 @@ public class loginController implements Initializable {
 
 
     }
+
+    public boolean encodePassword(String password,String userPassword) {
+       return password.equals("Solari123");  }
 }
 

@@ -94,7 +94,7 @@ public class SerieService implements IServiceSerie{
 
         try {
             Statement st = cnx.createStatement();
-            String req = "SELECT serie.* FROM serie,interest where interest.user_id = '"+userID+"' and serie.id=interest.serie_id";
+            String req = "SELECT serie.* FROM serie,interest where interest.user_id = '"+userID+"' and serie.id=interest.serie_id and interest.is_favor = 1";
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {

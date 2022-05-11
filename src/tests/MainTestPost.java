@@ -16,13 +16,7 @@ import java.time.LocalDate;
 public class MainTestPost {
        public static void main(String[] args) {
          PostService ps=new PostService();
-         Post post =new Post();
-         post.setDescription("I am watching "+ "<a href=\"/streaming/episode/watch/"+49+"\">"+" Season 1  "+" Episode 1"+"</a>");
-         post.setImage_url("https://www.nautiljon.com/images/more/01/40/141704.jpg");
-         post.setUser_id(114);
-         post.setCreated_at(String.valueOf(LocalDate.now()));
-         ps.addPost(post);
-
-          System.out.println(ps.fetchAllPost());
+         System.out.println(ps.fetchAllEpisodePosts("I am watching <a href=\"/streaming/episode/watch/49\"> Season 1 Seven Deadly Sins Episode 1 </a>",114));
+           System.out.println(ps.readPostComments(7));
     }
 }

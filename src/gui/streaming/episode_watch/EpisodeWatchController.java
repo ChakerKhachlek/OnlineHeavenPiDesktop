@@ -2,14 +2,19 @@ package gui.streaming.episode_watch;
 
 import com.jfoenix.controls.JFXButton;
 import gui.streaming.grid_list_multi_use.EpisodesListController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import models.*;
@@ -19,6 +24,8 @@ import services.UserService;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
@@ -36,11 +43,19 @@ public class EpisodeWatchController implements Initializable {
     @FXML
     private JFXButton shareButton;
 
+    @FXML
+    private Text postText;
+
+    @FXML
+    private ListView commentListView;
+
     private Serie serie;
     private Season season;
     private Episode episode;
 
     private User user;
+
+    private boolean isShared=false;
 
     String keyIsLoggedIn = "ISLOGGED";
     String keyToken = "TOKEN";
@@ -50,6 +65,31 @@ public class EpisodeWatchController implements Initializable {
         Preferences pref = Preferences.userRoot().node("SolariNode");
         UserService userService=new UserService();
         user=userService.getUserByToken(pref.get(keyToken,"no"));
+
+        PostService ps=new PostService();
+        List<Post> sharedPosts=ps.fetchAllEpisodePosts("I am watching "+ "<a href=\"/streaming/episode/watch/"+49+"\"> "+season.getName()+" "+episode.getname()+" </a>", user.getId());
+        System.out.println(sharedPosts);
+        if(sharedPosts.size() > 0 ){
+            shareButton.setText("Shared !");
+            shareButton.setDisable(true);
+            postText.setText("Episode shared at  : "+sharedPosts.get(0).getCreated_at().substring(0,10));
+            ArrayList arrayList= (ArrayList) ps.readPostComments(sharedPosts.get(0).getId());
+            ArrayList commentsList= new ArrayList();
+
+            for(int i=0;i< commentsList.size();i++){
+                Comment comment=(Comment ) commentsList.get(i);
+
+                commentsList.add(comment.getContent() + " "+comment.getCreated_at());
+            }
+            ObservableList observableList = FXCollections.observableArrayList(commentsList);
+
+            commentListView.setItems(observableList);
+
+
+        }else{
+            commentListView.setVisible(false);
+            postText.setText("");
+        }
 
         episodeTitle.setText(serie.getName()+" season "+season.getName()+" episode "+episode.getEpisode_number());
 
@@ -68,7 +108,6 @@ public class EpisodeWatchController implements Initializable {
         });
 
         shareButton.setOnAction(event->{
-            PostService ps=new PostService();
             Post post=new Post();
             post.setCreated_at(String.valueOf(LocalDate.now()));
             post.setUser_id(user.getId());
