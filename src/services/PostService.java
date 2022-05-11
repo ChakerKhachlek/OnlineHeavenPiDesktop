@@ -88,7 +88,7 @@ public class PostService implements IServicePost{
     public List<Post> fetchAllEpisodePosts(String postDescription,int user_id) {
         List<Post> posts= new ArrayList<>();
 
-        String req="select * from post where description like '%"+postDescription+"%' and user_id='"+user_id+"' order by id limit 1";
+        String req="select * from post where description like '%"+postDescription+"%' and user_id='"+user_id+"' order by id desc limit 1";
 
         try {
             Statement st=cnx.createStatement();

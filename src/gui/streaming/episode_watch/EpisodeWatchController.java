@@ -44,7 +44,7 @@ public class EpisodeWatchController implements Initializable {
     private JFXButton shareButton;
 
     @FXML
-    private Text postText;
+    private Text postText,commentsTitle;
 
     @FXML
     private ListView commentListView;
@@ -73,15 +73,15 @@ public class EpisodeWatchController implements Initializable {
             shareButton.setText("Shared !");
             shareButton.setDisable(true);
             postText.setText("Episode shared at  : "+sharedPosts.get(0).getCreated_at().substring(0,10));
-            ArrayList arrayList= (ArrayList) ps.readPostComments(sharedPosts.get(0).getId());
-            ArrayList commentsList= new ArrayList();
+            ArrayList commentsList= (ArrayList) ps.readPostComments(sharedPosts.get(0).getId());
 
+            ArrayList commentsDisplayList=new ArrayList();
             for(int i=0;i< commentsList.size();i++){
                 Comment comment=(Comment ) commentsList.get(i);
 
-                commentsList.add(comment.getContent() + " "+comment.getCreated_at());
+                commentsDisplayList.add(" Content : "+ comment.getContent() + " | Commented at : "+comment.getCreated_at());
             }
-            ObservableList observableList = FXCollections.observableArrayList(commentsList);
+            ObservableList observableList = FXCollections.observableArrayList(commentsDisplayList);
 
             commentListView.setItems(observableList);
 
@@ -89,6 +89,7 @@ public class EpisodeWatchController implements Initializable {
         }else{
             commentListView.setVisible(false);
             postText.setText("");
+            commentsTitle.setText("");
         }
 
         episodeTitle.setText(serie.getName()+" season "+season.getName()+" episode "+episode.getEpisode_number());
@@ -117,6 +118,23 @@ public class EpisodeWatchController implements Initializable {
 
             shareButton.setText("Shared !");
             shareButton.setDisable(true);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/streaming/episode_watch/EpisodeWatch.fxml"));
+            EpisodeWatchController episodeWatchController =new EpisodeWatchController();
+            episodeWatchController.setSerie(serie);
+            episodeWatchController.setSeason(season);
+            episodeWatchController.setEpisode(episode);
+
+
+            loader.setController(episodeWatchController);
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            content.setCenter(root);
         });
 
         backToEpisodesButton.setOnAction(event->{
