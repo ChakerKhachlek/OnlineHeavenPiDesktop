@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane fx:id="content" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <AnchorPane>
+                    <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="533.0">
+                            <children>
+                                <HBox prefHeight="535.0" prefWidth="637.0">
+                                    <children>
+                                        <VBox alignment="TOP_CENTER" prefHeight="420.0" prefWidth="637.0">
+                                            <children>
+                                    <HBox>
+                                       <VBox.margin>
+                                          <Insets bottom="30.0" left="30.0" right="30.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <JFXButton fx:id="backToEpisodesButton" prefHeight="33.0" prefWidth="65.0" style="-fx-background-color: transparent;" text="&lt; Back" textFill="#f600ff">
+                                             <font>
+                                                <Font name="Bauhaus 93" size="12.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                                      <Label fx:id="episodeTitle" text="serieLabel" textAlignment="CENTER" textFill="RED">
+                                                          <font>
+                                                              <Font name="Arial" size="24.0" />
+                                                          </font>
+                                             <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                             </padding>
+                                                      </Label>
+                                       </children>
+                                    </HBox>
+                                            <HBox alignment="CENTER" prefHeight="58.0" stylesheets="@../../../css/styles.css">
+                                                <children>
+                                                    <HBox alignment="TOP_CENTER" prefHeight="58.0" prefWidth="198.0" style="-fx-background-color: #1E88E5; -fx-background-radius: 50px;">
+                                                        <children>
+                                                            <ImageView fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                                                <image>
+                                                                    <Image url="@../../../icons/play-512.png" />
+                                                                </image>
+                                                                <HBox.margin>
+                                                                    <Insets bottom="3.0" left="20.0" top="3.0" />
+                                                                </HBox.margin>
+                                                            </ImageView>
+                                                            <JFXButton fx:id="playButton" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Play" textFill="WHITE">
+                                                                <font>
+                                                                    <Font name="Arial Bold" size="18.0" />
+                                                                </font>
+                                                                <HBox.margin>
+                                                                    <Insets />
+                                                                </HBox.margin>
+                                                            </JFXButton>
+                                                        </children>
+                                                        <opaqueInsets>
+                                                            <Insets />
+                                                        </opaqueInsets>
+                                                        <HBox.margin>
+                                                            <Insets left="30.0" />
+                                                        </HBox.margin>
+                                                        <padding>
+                                                            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                        </padding>
+                                                    </HBox>
+                                          <HBox prefHeight="41.0" prefWidth="193.0" style="-fx-background-color: #dc248c; -fx-background-radius: 50px;">
+                                             <children>
+                                                <ImageView fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../icons/eye-3-512.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets bottom="3.0" left="20.0" top="3.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <JFXButton fx:id="shareButton" prefHeight="33.0" prefWidth="134.0" style="-fx-background-color: transparent;" text="Share " textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </JFXButton>
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <padding>
+                                                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                             </padding>
+                                             <HBox.margin>
+                                                <Insets left="30.0" />
+                                             </HBox.margin>
+                                          </HBox>
+                                                </children>
+                                                <opaqueInsets>
+                                                    <Insets />
+                                                </opaqueInsets>
+                                                <VBox.margin>
+                                                    <Insets left="20.0" />
+                                                </VBox.margin>
+                                                <padding>
+                                                    <Insets top="30.0" />
+                                                </padding>
+                                            </HBox>
+                                    <VBox alignment="CENTER">
+                                       <VBox.margin>
+                                          <Insets top="30.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Text fx:id="postText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="601.0068359375">
+                                                   <font>
+                                                      <Font name="Arial" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <VBox>
+                                             <VBox.margin>
+                                                <Insets left="20.0" right="20.0" top="10.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Text fx:id="commentsTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Comments :" wrappingWidth="601.0068359375">
+                                                         <font>
+                                                            <Font name="Arial" size="18.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </HBox>
+                                                <ListView fx:id="commentListView" prefHeight="200.0" prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                            </children>
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,6 @@
+#login-pane{
+    -fx-background-image: url("/gui/auth/login-background.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 350 600;
+    -fx-background-position: center center;
+}

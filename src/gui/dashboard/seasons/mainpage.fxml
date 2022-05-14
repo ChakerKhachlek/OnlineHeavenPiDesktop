@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane fx:id="bpid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="476.0" minWidth="654.0" prefHeight="476.0" prefWidth="750.0" scaleShape="false" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.dashboard.seasons.MainpageController">
+     <top>
+      <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FF0000;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="seriempid" mnemonicParsing="false" onAction="#Seriemp" prefHeight="68.0" prefWidth="176.0" style="-fx-background-color: #FF0000; -fx-border-color: white; -fx-border-width: 0px 0px 2px 2px;" text="Serie" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="seasonid" layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#seasonmp" prefHeight="68.0" prefWidth="176.0" style="-fx-background-color: #FF0000; -fx-border-color: white; -fx-border-width: 0px 0px 2px 2px;" text="Season" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="262.0" layoutY="10.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="176.0" style="-fx-background-color: #FF0000; -fx-border-color: white; -fx-border-width: 0px 0px 2px 2px;" text="Empty" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="362.0" layoutY="10.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="176.0" style="-fx-background-color: #FF0000; -fx-border-color: white; -fx-border-width: 0px 0px 2px 2px;" text="Empty" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="todashboardid" layoutX="160.0" layoutY="10.0" mnemonicParsing="false" onAction="#todashboard" prefHeight="68.0" prefWidth="176.0" style="-fx-background-color: #FF0000; -fx-border-color: white; -fx-border-width: 0px 2px 2px 2px;" stylesheets="@style.css" text="Dashboard" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

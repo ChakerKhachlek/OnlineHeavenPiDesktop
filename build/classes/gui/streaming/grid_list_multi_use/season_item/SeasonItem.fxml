@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" onMouseClicked="#click" prefHeight="240.0" prefWidth="200.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.streaming.grid_list_multi_use.season_item.SeasonItemController">
+   <children>
+      <ImageView fx:id="img" fitHeight="160.0" fitWidth="200.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../icons/logosmall2.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nameLabel" alignment="CENTER" ellipsisString="." prefHeight="49.0" prefWidth="199.0" text="Nanatsu no taizai" textFill="#fc0000">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Label>
+   </children>
+</VBox>

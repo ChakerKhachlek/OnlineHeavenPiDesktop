@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="921.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.dashboard.seasons.GestionSeasonController">
+        <children>
+            <TableView fx:id="tableAbo" layoutX="298.0" layoutY="90.0" onMouseClicked="#selectedl" prefHeight="322.0" prefWidth="631.0">
+               <columns>
+                  <TableColumn fx:id="NomCol" prefWidth="91.19999694824219" text="Nom" />
+                  <TableColumn fx:id="serieCol" prefWidth="95.199951171875" text="SerieName" />
+                  <TableColumn fx:id="DescriptionCol" prefWidth="97.60003662109375" text="Description" />
+                  <TableColumn fx:id="imagecol" prefWidth="88.0" text="image_url" />
+                  <TableColumn fx:id="trailercol" prefWidth="115.20013427734375" text="trailer_url" />
+                  <TableColumn fx:id="fcol" prefWidth="150.39990234375" text="finished" />
+               </columns>
+            </TableView>
+            <TextField fx:id="txtNom" layoutX="78.0" layoutY="98.0" promptText="name" />
+            <TextField fx:id="txtDescription" layoutX="78.0" layoutY="140.0" promptText="description" stylesheets="@style.css" />
+            <TextField fx:id="txtimage" layoutX="78.0" layoutY="188.0" promptText="image" />
+            <Button fx:id="btnAjout" alignment="CENTER" contentDisplay="TOP" layoutX="110.0" layoutY="342.0" mnemonicParsing="false" onAction="#ajouterlog" prefHeight="70.0" prefWidth="114.0" styleClass="button1" text=" Ajouter" textFill="#181717">
+         <effect>
+            <Bloom />
+         </effect>
+         <graphic>
+            <FontAwesomeIconView glyphName="PLUS_CIRCLE" size="20" />
+         </graphic>
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+            <Button fx:id="btnSupp" layoutX="44.0" layoutY="425.0" mnemonicParsing="false" onAction="#supprimerloc" prefHeight="30.0" prefWidth="122.0" stylesheets="@style.css" text="Supprimer">
+         <graphic>
+            <FontAwesomeIconView glyphName="TRASH" size="20" />
+         </graphic></Button>
+            <Button fx:id="btnModif" layoutX="197.0" layoutY="425.0" mnemonicParsing="false" onAction="#modifierabonnement" prefHeight="30.0" prefWidth="162.0" stylesheets="@style.css" text="Modifier">
+         <graphic>
+            <FontAwesomeIconView glyphName="GEAR" size="20" />
+         </graphic></Button>
+            <TextField fx:id="txttrailer" layoutX="78.0" layoutY="239.0" promptText="trailer" />
+            <ImageView fx:id="IvFiles" fitHeight="150.0" fitWidth="114.0" layoutX="508.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="openImage" layoutX="314.0" layoutY="508.0" mnemonicParsing="false" onAction="#openImage" prefHeight="46.0" prefWidth="150.0" stylesheets="@style.css" text="opne image">
+         <graphic>
+            <FontAwesomeIconView glyphName="IMAGE" size="20" />
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+            <TextField fx:id="ftxt" layoutX="78.0" layoutY="292.0" promptText="season finished ?(oui/non)" />
+            <TextField fx:id="rechid" layoutX="355.0" layoutY="22.0" prefHeight="36.0" prefWidth="305.0" />
+            <Button fx:id="btnRetour" alignment="CENTER" contentDisplay="TOP" layoutX="816.0" layoutY="528.0" mnemonicParsing="false" onAction="#retour" prefHeight="60.0" prefWidth="77.0" stylesheets="@style.css" text="EXIT">
+         <graphic>
+            <FontAwesomeIconView glyphName="BAN" size="20" />
+         </graphic>
+         <font>
+            <Font name="Calibri" size="21.0" />
+         </font></Button>
+            <Button fx:id="sid" layoutX="44.0" layoutY="512.0" mnemonicParsing="false" onAction="#stat" prefHeight="46.0" prefWidth="150.0" stylesheets="@style.css" text="stat">
+         <graphic>
+            <FontAwesomeIconView glyphName="PIE_CHART" size="25" />
+         </graphic>
+         <font>
+            <Font size="21.0" />
+         </font></Button>
+      <ComboBox fx:id="serietxt" layoutX="78.0" layoutY="58.0" prefWidth="150.0" promptText="serie" />
+      <FontAwesomeIconView glyphName="SEARCH" layoutX="359.0" layoutY="48.0" size="25" />
+      <Button fx:id="imprimer" contentDisplay="TOP" layoutX="784.0" layoutY="433.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" text="imprimer">
+         <graphic>
+            <FontAwesomeIconView glyphName="PRINT" size="25" />
+         </graphic>
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="list" layoutX="769.0" layoutY="17.0" mnemonicParsing="false" onAction="#listview" prefHeight="26.0" prefWidth="133.0" text="listview">
+         <graphic>
+            <FontAwesomeIconView glyphName="LIST" size="20" />
+         </graphic>
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+         </children>
+      </AnchorPane>

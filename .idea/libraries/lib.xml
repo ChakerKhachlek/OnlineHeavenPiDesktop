@@ -11,6 +11,7 @@
       <root url="jar://$PROJECT_DIR$/lib/JavaFX/lib/javafx.base.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib/argon2-jvm-2.10.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib/argon2-jvm-nolibs-2.10.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/org-jdesktop-beansbinding.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

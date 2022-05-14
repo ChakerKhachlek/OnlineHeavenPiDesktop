@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" fx:id="interface5" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.dashboard.episodes.Update_episodeController">
+   <children>
+      <ImageView fx:id="img_up2" fitHeight="400.0" fitWidth="600.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../OneDrive/Documents/NetBeansProjects/workshop/src/gui/update1.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutY="372.0" prefHeight="32.0" prefWidth="600.0" style="-fx-background-color: #3F2B63;" />
+      <HBox layoutX="-1.0" layoutY="58.0" prefHeight="311.0" prefWidth="176.0" style="-fx-border-color: #191970; -fx-border-width: 10;">
+         <children>
+            <ImageView fx:id="img_up1" fitHeight="297.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../OneDrive/Documents/NetBeansProjects/workshop/src/gui/update3.png" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="62.0" prefWidth="167.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </HBox>
+      <Label fx:id="name_ep4" layoutX="243.0" layoutY="150.0" style="-fx-background-color: #191970;" text="name :" textFill="#f8f5f5" />
+      <Label fx:id="ep_num4" layoutX="209.0" layoutY="208.0" style="-fx-background-color: #191970;" text="Episode number :" textFill="#f8f4f4" />
+      <Label fx:id="vid_url4" layoutX="243.0" layoutY="260.0" style="-fx-background-color: #191970;" text="video url :" textFill="#fcfafa" />
+      <TextField fx:id="name5" layoutX="285.0" layoutY="146.0" promptText="Insert name" />
+      <TextField fx:id="ep_num5" layoutX="307.0" layoutY="204.0" promptText="Insert episode number" />
+      <TextField fx:id="vid_url5" layoutX="300.0" layoutY="256.0" promptText="Insert video url" />
+      <Button fx:id="bu9" layoutX="302.0" layoutY="308.0" mnemonicParsing="false" onAction="#up" prefHeight="32.0" prefWidth="86.0" style="-fx-background-color: #191970;" text="UPDATE" textFill="#fcf9f9" />
+      <Label fx:id="idd" layoutX="256.0" layoutY="83.0" prefHeight="17.0" prefWidth="18.0" style="-fx-background-color: #191970;" text="id :" textFill="#f2efef" />
+      <Label fx:id="lab_id" layoutX="279.0" layoutY="79.0" prefHeight="25.0" prefWidth="149.0" />
+      <Pane prefHeight="62.0" prefWidth="600.0" style="-fx-background-color: #3F2B63;">
+         <children>
+            <ImageView fx:id="img_llogo" fitHeight="50.0" fitWidth="167.0" layoutX="28.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../OneDrive/Documents/NetBeansProjects/workshop/src/gui/online.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="270.0" prefHeight="62.0" prefWidth="241.0" text="Update an episode" textFill="#f8f8f8" />
+         </children>
+      </Pane>
+      <Button fx:id="bu10" layoutX="500.0" layoutY="356.0" mnemonicParsing="false" onAction="#cancel_update" prefHeight="32.0" prefWidth="86.0" style="-fx-background-color: #191970;" text="CANCEL" textFill="#fffafa" />
+      <Label layoutX="235.0" layoutY="113.0" prefHeight="17.0" prefWidth="60.0" style="-fx-background-color: #191970;" text="season id :" textFill="#f8f5f5" />
+      <Label fx:id="lab_season" layoutX="300.0" layoutY="109.0" prefHeight="25.0" prefWidth="132.0" />
+   </children>
+</AnchorPane>

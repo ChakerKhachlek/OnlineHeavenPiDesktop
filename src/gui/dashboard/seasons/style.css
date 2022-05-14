@@ -1,0 +1,39 @@
+/*
+ * Empty Stylesheet file.
+ */
+.root{
+    -fx-background-image:url('4.jpg');   
+    -fx-background-size:cover;
+}
+.root2{
+    -fx-background-image:url('3.jpg');   
+    -fx-background-size:cover;
+}
+
+
+.button{
+   
+  -fx-background-color: #FF0000;
+  -fx-background-raduis:#30 0 0 30     
+}
+.button:hover{
+    -fx-background-color:#FFFFFF;
+  -fx-background-raduis:#30 0 0 30  
+      
+}
+
+.button:pressed{
+    
+    -fx-background-color: #FF0000;
+  -fx-background-raduis:#30 0 0 30    
+    
+}
+.text-field{
+     -fx-background-color: #EADDCA;
+}
+
+.table-view{
+    -fx-background-image:url('6.png');   
+    -fx-background-size:cover;
+    
+}
