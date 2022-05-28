@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="OnlineHeavenPiDesktop.jnlp">
+  <information>
+    <title>OnlineHeavenPiDesktop</title>
+    <vendor>Unknown</vendor>
+    <description>OnlineHeavenPiDesktop</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="OnlineHeavenPiDesktop.jar" size="13540951" download="eager" />
+    <jar href="libaries_icons\fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="libaries_icons\fontawesomefx-glyphsbrowser-all-1.0.jar" size="1662483" download="eager" />
+    <jar href="libaries_icons\jfoenix-8.0.1.jar" size="2405715" download="eager" />
+    <jar href="libaries_icons\mysql-connector-java-5.1.42-bin.jar" size="996444" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="600" height="400" main-class="main.MainApplication"  name="OnlineHeavenPiDesktop" />
+  <update check="background"/>
+</jnlp>

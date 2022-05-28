@@ -5,11 +5,14 @@
 package services;
 
 import database.DatabaseConnexion;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import interfaces.IServiceUser;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.PreparedStatement;
@@ -32,21 +35,17 @@ public class UserService implements IServiceUser{
     
     //ajouter un utilisateur
     public void createUser(User u) {
-        String req = "INSERT INTO `user` (`first_name`, `last_name`, `email`, `gender`, `profile_image`,`cover_image`,`age`,`bio`,`country`) VALUES (?,?,?,?,?,?,?,?,?)";
+        Argon2 argon2jvm =Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String arg2JvmHash = argon2jvm.hash(10, 65536, 1, u.getPassword());
+        String SQL_INSERT = "INSERT INTO USER (`username`,`first_name`, `last_name`, `email`, `gender`, `profile_image`,`cover_image`,`age`,`bio`,`country`,`password`,`is_verified`,`roles`)"
+                + " VALUES ('"+ u.getUsername()+ "','" + u.getFirst_name() + "','" + u.getLast_name() + "','" + u.getEmail() + "','" + u.getGender() + "','" + u.getProfile_image() + "','" + u.getCover_image() + "','" + u.getAge() + "','" + u.getBio() + "','" + u.getCountry()+ "','" +arg2JvmHash+ "','" + 1+"','"+"[]"+"')";
+        Statement ste;
         try {
-            PreparedStatement st = cnx.prepareStatement(req);
-            st.setString(1, u.getFirst_name());
-            st.setString(2, u.getLast_name());
-            st.setString(3, u.getEmail() );
-            st.setString(4, u.getGender());
-            st.setString(5, u.getProfile_image());
-            st.setString(6, u.getCover_image());
-            st.setInt(7, u.getAge());
-            st.setString(8, u.getBio());
-            st.setString(9, u.getCountry());
-            st.executeUpdate(req);
-               System.out.print(st.executeUpdate(req));
-            System.out.println("User ajoutée avec succes.");
+
+            ste = cnx.createStatement();
+            System.out.println(SQL_INSERT);
+            ste.executeUpdate(SQL_INSERT,Statement.RETURN_GENERATED_KEYS);
+            System.out.println("User created !");
             
         } catch (SQLException ex) {
          
@@ -394,5 +393,15 @@ public class UserService implements IServiceUser{
         }
 
     }
-    
+
+    public Boolean checkPassword(String password, String passwordFromDatabase) {
+        return Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id).verify(
+                passwordFromDatabase,
+                password.toCharArray()
+        );
+    }
+
+    public String encodePassword(String password) {
+        return Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id).hash(4, 65536, 1, password.toCharArray());
+    }
 }

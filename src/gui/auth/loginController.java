@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -37,6 +34,8 @@ public class loginController implements Initializable {
     @FXML
     private Label errorLabel;
 
+    @FXML
+    private Button registerButton;
 
     double x,y=0;
     String keyIsLoggedIn = "ISLOGGED";
@@ -45,7 +44,22 @@ public class loginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Preferences pref = Preferences.userRoot().node("SolariNode");
+        registerButton.setOnAction(event->{
 
+            try {
+                Stage current = (Stage) registerButton.getScene().getWindow();
+                Parent root = null;
+                Stage stage= new Stage();
+                root = FXMLLoader.load(getClass().getResource("/gui/auth/register/register.fxml"));
+                stage.getIcons().add(new Image(getClass().getResourceAsStream("/gui/dashboard/images/logosmall2.png")));
+                stage.setTitle("Online Heaven Register");
+                stage.setScene(new Scene(root,350,600));
+                stage.show();
+                current.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         loginButton.setOnAction(event->{
             UserService userService=new UserService();
@@ -139,6 +153,9 @@ public class loginController implements Initializable {
     }
 
     public boolean encodePassword(String password,String userPassword) {
-       return password.equals("Solari123");  }
+        return Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id).verify(
+                userPassword,
+                password.toCharArray()
+        );  }
 }
 

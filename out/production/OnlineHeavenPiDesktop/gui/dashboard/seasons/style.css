@@ -14,18 +14,18 @@
 .button{
    
   -fx-background-color: #FF0000;
-    -fx-background-radius:#30 0 0 30;
+  -fx-background-raduis:#30 0 0 30     
 }
 .button:hover{
     -fx-background-color:#FFFFFF;
-  -fx-background-raduis:#30 0 0 30  ;
+  -fx-background-raduis:#30 0 0 30  
       
 }
 
 .button:pressed{
     
     -fx-background-color: #FF0000;
-  -fx-background-radius:#30 0 0 30;
+  -fx-background-raduis:#30 0 0 30    
     
 }
 .text-field{

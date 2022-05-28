@@ -85,7 +85,23 @@ public class StreamingMenuController implements Initializable {
 
             currentStage.fireEvent(new WindowEvent(currentStage, WindowEvent.WINDOW_CLOSE_REQUEST));
 
+            Parent root = null;
+            try {
+                Stage stage= new Stage();
+                root = FXMLLoader.load(getClass().getResource("/gui/auth/login.fxml"));
+                stage.getIcons().add(new Image(getClass().getResourceAsStream("/gui/dashboard/images/logosmall2.png")));
+                stage.setTitle("Online Heaven Login");
+                stage.setScene(new Scene(root,350,600));
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+
+
             currentStage.close();
+
         });
 
         loadPage("./home/homePage.fxml");

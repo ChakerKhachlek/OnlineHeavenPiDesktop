@@ -14,13 +14,10 @@ public class MainTestUser {
     
      public static void main(String[] args) {
 
-       
          UserService pu=new UserService();
-         User user=new User("Test", "Test", "Test@gmail.com", "Male", "Test", "Test", 20, "waaa", "Tunisia", false);
+         User user=new User("Test","Test", "Test", "Test@gmail.com", "Male", "Test", "Test", 20, "waaa", "Tunisia", false,false,"waa");
          pu.createUser(user);
          System.out.println(pu.diasplayAllN());
-       
-        
-        
+
     }
 }

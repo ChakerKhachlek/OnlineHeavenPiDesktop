@@ -6,5 +6,9 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <excluded>
+      <root url="jar://$PROJECT_DIR$/lib/lib/argon2-jvm-2.10.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/argon2-jvm-nolibs-2.10.1.jar!/" />
+    </excluded>
   </library>
 </component>

@@ -59,7 +59,8 @@ public class User {
         this.country = country;
         this.is_admin = is_admin;
     }
-    public User( String first_name, String last_name, String email, String gender, String profile_image, String cover_image, int age, String bio, String country, boolean is_admin) {
+    public User( String username,String first_name, String last_name, String email, String gender, String profile_image, String cover_image, int age, String bio, String country, boolean is_admin,boolean is_verified,String password) {
+        this.username = username;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
@@ -70,6 +71,8 @@ public class User {
         this.bio = bio;
         this.country = country;
         this.is_admin = is_admin;
+        this.is_verified=is_verified;
+        this.password=password;
     }
     public User( String first_name, String last_name, String email, String gender, String profile_image, String cover_image, int age, String bio, String country) {
         this.first_name = first_name;
@@ -81,6 +84,7 @@ public class User {
         this.age = age;
         this.bio = bio;
         this.country = country;
+
     }
     public User(){
         

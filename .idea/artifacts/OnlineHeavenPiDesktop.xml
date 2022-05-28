@@ -1,0 +1,32 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="OnlineHeavenPiDesktop">
+    <output-path>$PROJECT_DIR$/out/artifacts/OnlineHeavenPiDesktop</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="main.MainApplication" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="all" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="1.0.1" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="OnlineHeavenPiDesktop.jar">
+        <element id="module-output" name="OnlineHeavenPiDesktop" />
+        <element id="library" level="project" name="argon2-jvm-2.10.1" />
+        <element id="library" level="project" name="JavaFX18" />
+        <element id="library" level="project" name="KotlinJavaRuntime" />
+        <element id="library" level="project" name="lib" />
+        <element id="library" level="project" name="lib1" />
+        <element id="library" level="project" name="lib2" />
+        <element id="library" level="project" name="lib3" />
+        <element id="library" level="project" name="libaries_icons" />
+        <element id="library" level="project" name="libaries_icons1" />
+        <element id="library" level="project" name="OnlineHeavenPiDesktop" />
+        <element id="library" level="project" name="org-netbeans-modules-java-j2seproject-copylibstask" />
+      </element>
+    </root>
+  </artifact>
+</component>
