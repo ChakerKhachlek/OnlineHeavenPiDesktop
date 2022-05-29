@@ -8,13 +8,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.User;
 import services.UserService;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -129,6 +134,13 @@ public class loginController implements Initializable {
                     }
                 }else if(!user.getUserRoles().contains("ROLE_SUBSCRIBED") && !user.getUserRoles().contains("ROLE_ADMIN")) {
                     errorLabel.setText("You are not subscribed !");
+                    try {
+                        Desktop.getDesktop().browse(new URL("http://localhost:8000/subscription").toURI());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
                     errorLabel.setVisible(true);
                 }
 
